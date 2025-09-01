@@ -1,6 +1,6 @@
 ---
-layout: default
+layout: minimal
 title: Home
 ---
 # Merhaba
-Burası benim GitHub Pages sitem.
+Ben Can ve burası benim GitHub sitem.
