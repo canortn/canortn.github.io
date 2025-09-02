@@ -10,5 +10,11 @@ Merhaba! Ben Can. 10. sınıf öğrencisiyim; yazılım, tasarım ve bilimle uğ
 ## Projects
 
 ### Scratch Tic-Tac-Toe
-Bu projeyi Scratch’te yaptım; basit bir tic-tac-toe oyunu.  
+
+Bu projeyi Scratch’te yaptım; basit bir tic-tac-toe oyunu  
 👉 [Buradan oynayabilirsin](https://scratch.mit.edu/projects/1212433117/)
+
+### Documentation
+
+Buda benim Scratch de olusturduğum Tic Tac Toe oyunu ile alakalı documentation linkim:
+👉 [Buradan bakabilirsin](https://docs.google.com/document/d/1VRMzlpsDjyvOkWMFKsbMSgZLezatUnIJYwSzC4RLOAE/edit?usp=sharing)
