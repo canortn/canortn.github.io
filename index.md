@@ -1,5 +1,5 @@
 ---
-layout: minimal
+layout: normal
 title: Home
 ---
 # Merhaba
