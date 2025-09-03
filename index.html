@@ -51,7 +51,6 @@
     <!-- PROJECTS -->
     <section id="projects" class="page" data-title="Projects — Can Ortanç">
       <h2>Projects</h2>
-
       <div class="grid">
         <article class="card">
           <h3>Scratch Tic-Tac-Toe</h3>
@@ -65,12 +64,41 @@
 
     <!-- BIG IDEAS -->
     <section id="big-ideas" class="page" data-title="Big Ideas — Can Ortanç">
-      <h2>Big Ideas</h2>
-      <ul>
-        <li><strong>Scam Prevention App:</strong> Yaşlı kullanıcıları sahte arama/SMS’lere karşı koruyan basit ve anlaşılır arayüz.</li>
-        <li><strong>Öğren-yaşa-paylaş:</strong> Projeleri açıkça belgeleyip paylaşma; herkes için erişilebilir içerik.</li>
-        <li><strong>STEM & tasarım birleşimi:</strong> Kod + modelleme + kullanıcı deneyimi ile ürün odaklı çalışmalar.</li>
-      </ul>
+      <h2>Big Idea 1 — Creative Development</h2>
+
+      <article class="card">
+        <p>
+          In this unit I practiced turning an idea into a working program by planning, iterating, and clearly 
+          communicating my design. I kept short notes and screenshots as documentation and created a quick 
+          narration to explain how the program works and why I built it.
+        </p>
+
+        <ul>
+          <li><strong>1.1 Collaboration:</strong> We used <em>teamwork</em> to split tasks and <em>problem-solving</em> to unblock each other during bugs.</li>
+          <li><strong>1.2 Program Design & Development:</strong> I wrote simple <em>algorithms</em>, drafted <em>pseudocode</em>, and used <em>debugging</em> (print checks, step-by-step tests) to refine behavior.</li>
+          <li><strong>1.3 Program Function & Purpose:</strong> Defined the goal and audience, mapped <em>input/output</em>, grouped logic into <em>functions/procedures</em>, and recorded <em>documentation</em> so others can understand and reuse it.</li>
+          <li><strong>1.4 Identifying & Correcting Errors:</strong> Wrote small <em>tests</em>, tried edge cases, and added basic <em>error handling</em> to avoid crashes or invalid inputs.</li>
+        </ul>
+
+        <p class="muted">
+          <strong>2-minute narration:</strong> a short screen-recording that summarizes the purpose, key features, and 
+          one example of debugging. (See the video below.)
+        </p>
+
+        <!-- Videonu /assets/big-idea1.mp4 olarak eklersen bu blok çalışır -->
+        <div class="video-container">
+          <video controls preload="metadata">
+            <source src="assets/big-idea1.mp4" type="video/mp4" />
+            Tarayıcın video etiketini desteklemiyorsa 
+            <a href="assets/big-idea1.mp4">videoyu buradan indir</a>.
+          </video>
+        </div>
+
+        <!-- Dış link kullanmak istersen (MP4 yüklemeye gerek yok) -->
+        <div class="links">
+          <a href="https://www.veed.io/view/1f4218c4-9c37-4579-b079-d8ef7a13e7f9?panel=share" target="_blank" rel="noopener">Watch narration (external)</a>
+        </div>
+      </article>
     </section>
 
     <!-- DOCUMENTATION -->
@@ -78,11 +106,12 @@
       <h2>Documentation</h2>
 
       <div class="links" aria-label="Docs Links">
+        <a href="https://github.com/canortn" target="_blank" rel="noopener">GitHub</a>
+        <a href="https://scratch.mit.edu/users/canortanchisarschool/" target="_blank" rel="noopener">Scratch</a>
       </div>
 
       <hr>
 
-      <!-- İstediğin İngilizce açıklama -->
       <article class="card">
         <h3>Scratch Tic-Tac-Toe — Documentation</h3>
         <p lang="en">
@@ -93,14 +122,6 @@
         </p>
         <p><a href="https://www.veed.io/view/1f4218c4-9c37-4579-b079-d8ef7a13e7f9?panel=share" target="_blank" rel="noopener">Watch the video</a></p>
       </article>
-
-      <!-- Video dosyasını doğrudan gömmek istersen (opsiyonel) 
-      <div class="video-container">
-        <video controls preload="metadata">
-          <source src="assets/demo.mp4" type="video/mp4" />
-        </video>
-      </div>
-      -->
     </section>
   </main>
 
@@ -124,7 +145,6 @@
     function showPage(name){
       pages.forEach(sec => sec.style.display = 'none');
       Object.values(navLinks).forEach(a => a && a.removeAttribute('aria-current'));
-
       const id = name || 'home';
       const active = document.getElementById(id);
       if(active){
