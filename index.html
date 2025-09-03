@@ -85,18 +85,20 @@
           one example of debugging. (See the video below.)
         </p>
 
-        <!-- Videonu /assets/big-idea1.mp4 olarak eklersen bu blok çalışır -->
-        <div class="video-container">
-          <video controls preload="metadata">
+        <!-- VİDEO: MP4 dosyanı assets/big-idea1.mp4 olarak yükle -->
+        <div class="video-container" id="bigidea1-video">
+          <video controls preload="metadata" playsinline>
             <source src="assets/big-idea1.mp4" type="video/mp4" />
             Tarayıcın video etiketini desteklemiyorsa 
             <a href="assets/big-idea1.mp4">videoyu buradan indir</a>.
           </video>
-        </div>
-
-        <!-- Dış link kullanmak istersen (MP4 yüklemeye gerek yok) -->
-        <div class="links">
-          <a href="https://www.veed.io/view/1f4218c4-9c37-4579-b079-d8ef7a13e7f9?panel=share" target="_blank" rel="noopener">Watch narration (external)</a>
+          <div class="links">
+            <a href="assets/big-idea1.mp4" download>Download MP4</a>
+            <a href="https://www.veed.io/view/1f4218c4-9c37-4579-b079-d8ef7a13e7f9?panel=share" target="_blank" rel="noopener">Watch narration (external)</a>
+          </div>
+          <!-- İstersen kapak görseli ekleyebilirsin:
+          <video controls preload="metadata" playsinline poster="assets/big-idea1.jpg"> ... </video>
+          -->
         </div>
       </article>
     </section>
