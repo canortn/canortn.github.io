@@ -6,9 +6,7 @@
   <title>Can Ortanç — Portfolio</title>
   <meta name="description" content="Can Ortanç | 10. sınıf öğrencisi — yazılım, web ve tasarım projeleri." />
   <style>
-    :root{
-      --bg:#ffffff; --text:#111; --link:#0b5ed7; --muted:#666; --border:#ddd;
-    }
+    :root{ --bg:#ffffff; --text:#111; --link:#0b5ed7; --muted:#666; --border:#ddd; }
     *{box-sizing:border-box}
     body{margin:0;font-family:Arial,Helvetica,sans-serif;background:var(--bg);color:var(--text);line-height:1.5}
     header,main,footer{max-width:900px;margin:0 auto;padding:12px 16px}
@@ -28,6 +26,7 @@
     .video-container video{width:100%;height:auto;display:block;border:1px solid var(--border);border-radius:6px}
     img{max-width:100%;border:1px solid var(--border);border-radius:6px;margin-top:10px}
     footer{border-top:1px solid var(--border);margin-top:24px;padding-top:16px;font-size:14px}
+    hr{border:none;border-top:1px solid var(--border);margin:16px 0}
   </style>
 </head>
 <body>
@@ -61,6 +60,8 @@
             <a href="https://scratch.mit.edu/projects/1212433117/" target="_blank" rel="noopener">Play on Scratch</a>
           </div>
         </article>
+      </div>
+    </section>
 
     <!-- BIG IDEAS -->
     <section id="big-ideas" class="page" data-title="Big Ideas — Can Ortanç">
@@ -83,12 +84,24 @@
         <a href="https://scratch.mit.edu/users/canortanchisarschool/" target="_blank" rel="noopener">Scratch</a>
       </div>
 
-      <!-- İstersen bir demo videosu gömebilirsin -->
-      <!--
+      <hr>
+
+      <!-- İstediğin İngilizce açıklama -->
+      <article class="card">
+        <h3>Scratch Tic-Tac-Toe — Documentation</h3>
+        <p lang="en">
+          This Scratch project is a Tic-Tac-Toe game I built with help from my friend Ömer Eren Hatipoğlu.
+          Nine tiles toggle between X and O; win sprites check rows, columns, and diagonals, highlight the
+          winning line, and stop input. Next steps: fix edge-case bugs, add win/draw counters, a reset and
+          scoreboard, player vs. CPU mode, sound effects, and cleaner code.
+        </p>
+        <p><a href="https://www.veed.io/view/1f4218c4-9c37-4579-b079-d8ef7a13e7f9?panel=share" target="_blank" rel="noopener">Watch the video</a></p>
+      </article>
+
+      <!-- Video dosyasını doğrudan gömmek istersen (opsiyonel) 
       <div class="video-container">
         <video controls preload="metadata">
           <source src="assets/demo.mp4" type="video/mp4" />
-          Tarayıcın video etiketini desteklemiyor.
         </video>
       </div>
       -->
