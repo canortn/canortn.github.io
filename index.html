@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Can Ortanç — Portfolio</title>
+  <meta name="description" content="Can Ortanç | 10. sınıf öğrencisi — yazılım, web ve tasarım projeleri." />
+  <style>
+    :root{
+      --bg:#ffffff; --text:#111; --link:#0b5ed7; --muted:#666; --border:#ddd;
+    }
+    *{box-sizing:border-box}
+    body{margin:0;font-family:Arial,Helvetica,sans-serif;background:var(--bg);color:var(--text);line-height:1.5}
+    header,main,footer{max-width:900px;margin:0 auto;padding:12px 16px}
+    header{border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;gap:12px}
+    nav a{margin-right:12px;text-decoration:none;color:var(--link);font-weight:bold}
+    nav a[aria-current="page"]{text-decoration:underline}
+    h1{font-size:24px;margin:0}
+    h2{font-size:20px;margin:0 0 8px}
+    .page{display:none;padding:16px 0;border-bottom:1px solid var(--border)}
+    .page:last-of-type{border-bottom:0}
+    .muted{color:var(--muted)}
+    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px}
+    .card{border:1px solid var(--border);border-radius:8px;padding:12px}
+    .links{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px}
+    .links a{border:1px solid var(--border);padding:6px 10px;text-decoration:none;color:var(--link);border-radius:4px;font-size:14px}
+    .video-container{max-width:700px;width:100%;margin:10px 0 20px}
+    .video-container video{width:100%;height:auto;display:block;border:1px solid var(--border);border-radius:6px}
+    img{max-width:100%;border:1px solid var(--border);border-radius:6px;margin-top:10px}
+    footer{border-top:1px solid var(--border);margin-top:24px;padding-top:16px;font-size:14px}
+  </style>
+</head>
+<body>
+  <header>
+    <div><strong>Can Ortanç</strong></div>
+    <nav aria-label="Primary">
+      <a href="#home" id="nav-home">Home</a>
+      <a href="#projects" id="nav-projects">Projects</a>
+      <a href="#big-ideas" id="nav-big-ideas">Big Ideas</a>
+      <a href="#documentation" id="nav-documentation">Documentation</a>
+    </nav>
+  </header>
+
+  <main>
+    <!-- HOME -->
+    <section id="home" class="page" data-title="Home — Can Ortanç">
+      <h2>Home</h2>
+      <p class="muted">10. sınıf öğrencisi · Python / Web · Tasarım ve bilim meraklısı</p>
+      <p>Merhaba! Ben Can. Yazılım, tasarım ve bilimle uğraşmayı seviyorum. Python ile projeler geliştiriyorum, GitHub Pages üzerinde bu portföyü yürütüyorum ve yeni şeyler öğrenmeyi çok önemsiyorum. Sosyal etki üreten fikirler (özellikle güvenlik ve erişilebilirlik) ilgimi çekiyor.</p>
+    </section>
+
+    <!-- PROJECTS -->
+    <section id="projects" class="page" data-title="Projects — Can Ortanç">
+      <h2>Projects</h2>
+
+      <div class="grid">
+        <article class="card">
+          <h3>Scratch Tic-Tac-Toe</h3>
+          <p>Scratch’te yaptığım basit bir tic-tac-toe oyunu.</p>
+          <div class="links">
+            <a href="https://scratch.mit.edu/projects/1212433117/" target="_blank" rel="noopener">Play on Scratch</a>
+          </div>
+        </article>
+
+        <article class="card">
+          <h3>Flask Blackjack (8-Deck, Betting, Double)</h3>
+          <p>Çok desteli (8 deck) blackjack oyunu; bahis, <em>double</em> ve kart sayma mantığıyla.</p>
+          <div class="links">
+            <a href="#" target="_blank" rel="noopener">Repo (ekle)</a>
+            <a href="#" target="_blank" rel="noopener">Live Demo (ekle)</a>
+          </div>
+        </article>
+
+        <article class="card">
+          <h3>F1 Steering Wheel – Fusion 360</h3>
+          <p>“Dead man’s switch” konseptli kavramsal F1 direksiyonu; eskiz + render.</p>
+          <div class="links">
+            <a href="#" target="_blank" rel="noopener">Görseller (ekle)</a>
+            <a href="#" target="_blank" rel="noopener">Video (ekle)</a>
+          </div>
+        </article>
+
+        <article class="card">
+          <h3>Micro:bit AI Exercise Timer</h3>
+          <p>Basit poz algılama ve sayaç mantığıyla sınıf içi egzersiz zamanlayıcı.</p>
+          <div class="links">
+            <a href="#" target="_blank" rel="noopener">Kod / MakeCode (ekle)</a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- BIG IDEAS -->
+    <section id="big-ideas" class="page" data-title="Big Ideas — Can Ortanç">
+      <h2>Big Ideas</h2>
+      <ul>
+        <li><strong>Scam Prevention App:</strong> Yaşlı kullanıcıları sahte arama/SMS’lere karşı koruyan basit ve anlaşılır arayüz.</li>
+        <li><strong>Öğren-yaşa-paylaş:</strong> Projeleri açıkça belgeleyip paylaşma; herkes için erişilebilir içerik.</li>
+        <li><strong>STEM & tasarım birleşimi:</strong> Kod + modelleme + kullanıcı deneyimi ile ürün odaklı çalışmalar.</li>
+      </ul>
+    </section>
+
+    <!-- DOCUMENTATION -->
+    <section id="documentation" class="page" data-title="Docs — Can Ortanç">
+      <h2>Documentation</h2>
+      <p>Proje notları, sunumlar ve özgeçmiş:</p>
+
+      <div class="links" aria-label="Docs Links">
+        <a href="assets/resume.pdf" target="_blank" rel="noopener">Resume (PDF)</a>
+        <a href="https://github.com/canortn" target="_blank" rel="noopener">GitHub</a>
+        <a href="https://scratch.mit.edu/users/canortanchisarschool/" target="_blank" rel="noopener">Scratch</a>
+      </div>
+
+      <!-- İstersen bir demo videosu gömebilirsin -->
+      <!--
+      <div class="video-container">
+        <video controls preload="metadata">
+          <source src="assets/demo.mp4" type="video/mp4" />
+          Tarayıcın video etiketini desteklemiyor.
+        </video>
+      </div>
+      -->
+    </section>
+  </main>
+
+  <footer>
+    <div class="links" aria-label="Profile Links">
+      <a href="https://github.com/canortn" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://scratch.mit.edu/users/canortanchisarschool/" target="_blank" rel="noopener">Scratch</a>
+    </div>
+  </footer>
+
+  <script>
+    // Basit hash router
+    const pages = Array.from(document.querySelectorAll('.page'));
+    const navLinks = {
+      home: document.getElementById('nav-home'),
+      projects: document.getElementById('nav-projects'),
+      'big-ideas': document.getElementById('nav-big-ideas'),
+      documentation: document.getElementById('nav-documentation')
+    };
+
+    function showPage(name){
+      pages.forEach(sec => sec.style.display = 'none');
+      Object.values(navLinks).forEach(a => a && a.removeAttribute('aria-current'));
+
+      const id = name || 'home';
+      const active = document.getElementById(id);
+      if(active){
+        active.style.display = 'block';
+        if(navLinks[id]) navLinks[id].setAttribute('aria-current','page');
+        document.title = active.getAttribute('data-title') || 'Can Ortanç — Portfolio';
+      }else{
+        location.hash = '#home';
+      }
+    }
+    function onRouteChange(){
+      const hash = location.hash.replace('#','');
+      showPage(hash || 'home');
+    }
+    window.addEventListener('hashchange', onRouteChange);
+    window.addEventListener('DOMContentLoaded', onRouteChange);
+  </script>
+</body>
+</html>
