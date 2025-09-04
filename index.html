@@ -24,6 +24,8 @@
     .links a{border:1px solid var(--border);padding:6px 10px;text-decoration:none;color:var(--link);border-radius:4px;font-size:14px}
     .video-container{max-width:700px;width:100%;margin:10px 0 20px}
     .video-container video{width:100%;height:auto;display:block;border:1px solid var(--border);border-radius:6px}
+    /* iframe için stil */
+    .video-container iframe{width:100%;height:394px;display:block;border:1px solid var(--border);border-radius:6px}
     img{max-width:100%;border:1px solid var(--border);border-radius:6px;margin-top:10px}
     footer{border-top:1px solid var(--border);margin-top:24px;padding-top:16px;font-size:14px}
     hr{border:none;border-top:1px solid var(--border);margin:16px 0}
@@ -45,7 +47,7 @@
     <section id="home" class="page" data-title="Home — Can Ortanç">
       <h2>Home</h2>
       <p class="muted">10. sınıf öğrencisi · Python / Web · Tasarım ve bilim meraklısı</p>
-      <p>Merhaba! Ben Can. Yazılım, tasarım ve bilimle uğraşmayı seviyorum. Python ile projeler geliştiriyorum, GitHub Pages üzerinde bu portföyü yürütüyorum ve yeni şeyler öğrenmeyi çok önemsiyorum. Sosyal etki üreten fikirler (özellikle güvenlik ve erişilebilirlik) ilgimi çekiyor.</p>
+      <p>Hi! I’m Can. I love working on software, design, and science. I develop projects in Python, maintain this portfolio on GitHub Pages, and I care a lot about learning new things. I’m drawn to ideas with social impact—especially around security and accessibility.</p>
     </section>
 
     <!-- PROJECTS -->
@@ -54,7 +56,7 @@
       <div class="grid">
         <article class="card">
           <h3>Scratch Tic-Tac-Toe</h3>
-          <p>Scratch’te yaptığım basit bir tic-tac-toe oyunu.</p>
+          <p>The tic-tac-toe game that i did in Scratch.</p>
           <div class="links">
             <a href="https://scratch.mit.edu/projects/1212433117/" target="_blank" rel="noopener">Play on Scratch</a>
           </div>
@@ -83,15 +85,19 @@
           <strong>4-minute narration:</strong> a short screen-recording that summarizes the purpose, key features, and 
           one example of debugging. (See the video below.)
         </p>
+
+        <!-- VEED linkiyle gömülü oynatıcı -->
         <div class="video-container" id="bigidea1-video">
-          <video controls preload="metadata" playsinline>
-            <source src="assets/big-idea1.mp4" type="video/mp4" />
-          </video>
+          <iframe 
+            src="https://www.veed.io/view/f034f216-00f3-4b66-905b-4a739faf3acb?panel=share" 
+            title="Big Idea 1 — Creative Development"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen>
+          </iframe>
           <div class="links">
+            <a href="https://www.veed.io/view/f034f216-00f3-4b66-905b-4a739faf3acb?panel=share" target="_blank" rel="noopener">Open in new tab</a>
           </div>
-          <!-- İstersen kapak görseli ekleyebilirsin:
-          <video controls preload="metadata" playsinline poster="assets/big-idea1.jpg"> ... </video>
-          -->
         </div>
       </article>
     </section>
@@ -110,7 +116,7 @@
       <article class="card">
         <h3>Scratch Tic-Tac-Toe — Documentation</h3>
         <p lang="en">
-          This Scratch project is a Tic-Tac-Toe game I built with help from my friend Ömer Eren Hatipoğlu.
+          This Scratch project is a Tic-Tac-Toe game I built with help from my friend Ö.E.H.
           Nine tiles toggle between X and O; win sprites check rows, columns, and diagonals, highlight the
           winning line, and stop input. Next steps: fix edge-case bugs, add win/draw counters, a reset and
           scoreboard, player vs. CPU mode, sound effects, and cleaner code.
