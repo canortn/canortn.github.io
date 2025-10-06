@@ -506,6 +506,81 @@ struct ContentView: View {
       </div>
     </section>
 
+    <article class="card">
+          <h3>SwiftUi 4-Bit Binary Counter</h3>
+          <p>The The Bit Counter i did with Swift code.</p>
+          <p>The Reflection: </p>
+          <p> This project shows a 4-bit counter from 0–15, showing the value in decimal and 4-bit binary. I used a simple decimalToBinary(_:) built from powers 8–4–2–1 and managed state in SwiftUI with +1 and Reset features. If I had more time i would add a 5-bit toggle and a preset like Set ID = 7, Set ID = 14 like that.</p>
+          </div>
+          <div class="links"></div>
+          <details>
+            <summary>Show Swift code</summary>
+            <pre><code class="language-swift">import SwiftUI
+
+struct ContentView: View {
+    @State var id = 0
+    let maxID = 15
+    
+    func decimalToBinary(_ number: Int) -> String {
+        let powers = [8, 4, 2, 1]
+        var n = number % 16
+        var bits = ""
+        for p in powers {
+            if n >= p { bits += "1"; n -= p } else { bits += "0" }
+        }
+        return bits
+    }
+    
+    func enrollStudent(_ number: Int) {
+        print("Student enrolled with ID:", number)
+    }
+    
+    var body: some View {
+        ZStack {
+            Color.black.ignoresSafeArea()
+            VStack(spacing: 16) {
+                Text("4-Bit ID Counter").font(.title).foregroundColor(.white).bold()
+                HStack {
+                    Text("Decimal: \(id)").foregroundColor(.white)
+                    Text("Binary: \(decimalToBinary(id))").foregroundColor(.white)
+                }.font(.title3) 
+                
+                let bits = Array(decimalToBinary(id)).map { String($0) }
+                HStack(spacing: 12) {
+                    ForEach(0..<4, id: \.self) { i in
+                        RoundedRectangle(cornerRadius: 14)
+                            .fill(bits[i] == "1" ? Color.green : Color.gray.opacity(0.6))
+                            .frame(width: 68, height: 68)
+                            .overlay(Text(bits[i]).font(.title).bold().foregroundColor(.white))
+                    }
+                }
+                
+                HStack(spacing: 24) {
+                    Button("Enroll (+1)") {
+                        if id == maxID { id = 0; print("Overflow! Reset to 0") } else { id += 1 }
+                        enrollStudent(id)
+                    }
+                    
+                    Button("Reset (0)") {
+                        id = 0
+                    }
+                }
+                
+                Button("Log to Console") {
+                    print("Decimal:", id, "Binary:", decimalToBinary(id))
+                }
+            }
+            .padding()
+        }
+    }
+}
+
+}</code></pre>
+          </details>
+        </article>
+      </div>
+    </section>
+
     <section id="big-ideas" class="page" data-title="Big Ideas — Can Ortanç">
       <h2>Big Idea 1 — Creative Development</h2>
 
