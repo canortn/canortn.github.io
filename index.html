@@ -606,70 +606,69 @@ struct ContentView: View {
           <details>
             <summary>Show Swift code</summary>
             <pre><code class="language-swift">import SwiftUI
+
 struct ContentView: View {
-    @State var hour=0
-    @State var minuteSeg=0
-    let randomInt = Int.random(in:0...23)
+    @State var hour = 0
+    @State var minuteSeg = 0
     
-    var hourAngle:Double{
-        let h=hour%12
-        return (h==0 && minuteSeg==0) ? 0 : Double(h)*30+Double(minuteSeg)*7.5
+    var hourAngle: Double {
+        let h = hour % 12
+        return (h == 0 && minuteSeg == 0) ? 0 : Double(h) * 30 + Double(minuteSeg) * 7.5
     }
+    
     var body: some View {
-        ZStack{
-            (hour<12 ? Color.white : Color.gray).ignoresSafeArea()
+        ZStack {
+            (hour < 12 ? Color.white : Color.gray).ignoresSafeArea()
             
-            VStack(spacing:16){
+            VStack(spacing: 16) {
                 Text("Time: \(hour)")
-                    .foregroundColor(hour<12 ? .black : .white)
+                    .foregroundColor(hour < 12 ? .black : .white)
                 
-                HStack(spacing:20){
+                HStack(spacing: 20) {
+                    Circle()
+                        .fill(.black)
+                        .overlay(Circle().stroke(.black, lineWidth: 4))
+                        .offset(y: 70)
+                        .frame(width: 150, height: 100)
                     
                     Circle()
                         .fill(.black)
-                        .overlay(Circle()
-                            .stroke(.black,lineWidth:4))
-                        .offset(y:70).frame(width:150,height:100)
-                    
-                    Circle()
-                        .fill(.black)
-                        .overlay(Circle()
-                            .stroke(.black,lineWidth:4))
-                        .offset(y:70)
-                        .frame(width:150,height:100)
+                        .overlay(Circle().stroke(.black, lineWidth: 4))
+                        .offset(y: 70)
+                        .frame(width: 150, height: 100)
                 }
                 
-                ZStack{
-                    if hour<12{
-                        
+                ZStack {
+                    if hour < 12 {
                         Circle()
                             .fill(.white)
-                            .overlay(Circle()
-                                .stroke(.black,lineWidth:4))
-                            .frame(width:200,height:200)
+                            .overlay(Circle().stroke(.black, lineWidth: 4))
+                            .frame(width: 200, height: 200)
                         
                         Ellipse()
                             .fill(.yellow)
-                            .frame(width:30,height:80)
-                            .offset(x:43,y:-25)
+                            .frame(width: 30, height: 80)
+                            .offset(x: 43, y: -25)
                         
-                        Ellipse().fill(.yellow)
-                            .frame(width:30,height:80)
-                            .offset(x:-43,y:-25)
-                    }else{
+                        Ellipse()
+                            .fill(.yellow)
+                            .frame(width: 30, height: 80)
+                            .offset(x: -43, y: -25)
+                    } else {
+                        Circle()
+                            .fill(.white)
+                            .overlay(Circle().stroke(.black, lineWidth: 4))
+                            .frame(width: 200, height: 200)
                         
-                        Circle().fill(.white)
-                            .overlay(Circle()
-                                .stroke(.black,lineWidth:4))
-                            .frame(width:200,height:200)
+                        Ellipse()
+                            .fill(.blue)
+                            .frame(width: 30, height: 80)
+                            .offset(x: 43, y: -25)
                         
-                        Ellipse().fill(.blue)
-                            .frame(width:30,height:80)
-                            .offset(x:43,y:-25)
-                        
-                        Ellipse().fill(.blue)
-                            .frame(width:30,height:80)
-                            .offset(x:-43,y:-25)
+                        Ellipse()
+                            .fill(.blue)
+                            .frame(width: 30, height: 80)
+                            .offset(x: -43, y: -25)
                     }
                     
                     GeometryReader { geo in
@@ -679,94 +678,60 @@ struct ContentView: View {
                         
                         ForEach(1...12, id: \.self) { number in
                             Text("\(number)")
-                            .font(.title3)
-                            .foregroundColor(.black) 
-                            .position(
-                            x: centerX + radius * cos(CGFloat(number) * .pi / 6 - .pi/2),
-                            y: centerY + radius * sin(CGFloat(number) * .pi / 6 - .pi/2)
+                                .font(.title3)
+                                .foregroundColor(.black)
+                                .position(
+                                    x: centerX + radius * cos(CGFloat(number) * .pi / 6 - .pi/2),
+                                    y: centerY + radius * sin(CGFloat(number) * .pi / 6 - .pi/2)
                                 )
                         }
                     }
-                    .frame(width:200,height:200)
+                    .frame(width: 200, height: 200)
                     
-                    Group{
-                        if minuteSeg==0{
-                            Rectangle()
-                                .fill(.black)
-                                .frame(width:5,height:80)
-                                .offset(x:0,y:-43)
-                        }else if minuteSeg==1{
-                            Rectangle()
-                                .fill(.black)
-                                .frame(width:80,height:5)
-                                .offset(x:43,y:0)
-                        }else if minuteSeg==2{
-                            Rectangle()
-                                .fill(.black)
-                                .frame(width:5,height:80)
-                                .offset(x:0,y:43)
-                        }else{
-                            Rectangle()
-                                .fill(.black)
-                                .frame(width:80,height:5)
-                                .offset(x:-43,y:0)
+                    Group {
+                        if minuteSeg == 0 {
+                            Rectangle().fill(.black).frame(width: 5, height: 80).offset(x: 0, y: -43)
+                        } else if minuteSeg == 1 {
+                            Rectangle().fill(.black).frame(width: 80, height: 5).offset(x: 43, y: 0)
+                        } else if minuteSeg == 2 {
+                            Rectangle().fill(.black).frame(width: 5, height: 80).offset(x: 0, y: 43)
+                        } else {
+                            Rectangle().fill(.black).frame(width: 80, height: 5).offset(x: -43, y: 0)
                         }
                     }
                     
                     Rectangle()
                         .fill(.black)
-                        .frame(width:8,height:40)
-                        .offset(x:0,y:-25)
+                        .frame(width: 8, height: 40)
+                        .offset(x: 0, y: -25)
                         .rotationEffect(.degrees(hourAngle))
-                    Circle()
-                        .fill(.black)
-                        .frame(width:10,height:10)
                     
-                    Rectangle()
-                        .fill(.black)
-                        .frame(width:50,height:5)
-                        .offset(x:0,y:52)
-                    Rectangle()
-                        .fill(.black)
-                        .frame(width:17,height:7)
-                        .offset(x:20,y:49)
-                    Rectangle()
-                        .fill(.black)
-                        .frame(width:17,height:7)
-                        .offset(x:-20,y:49)
-                    Rectangle()
-                        .fill(.black)
-                        .frame(width:10,height:4)
-                        .offset(x:20,y:53)
-                    Rectangle()
-                        .fill(.black)
-                        .frame(width:10,height:4)
-                        .offset(x:-20,y:53)
-                    Rectangle()
-                        .fill(.black)
-                        .frame(width:30,height:5)
-                        .offset(x:0,y:55)
+                    Circle().fill(.black).frame(width: 10, height: 10)
+                    
+                    Rectangle().fill(.black).frame(width: 50, height: 5).offset(x: 0, y: 52)
+                    Rectangle().fill(.black).frame(width: 17, height: 7).offset(x: 20, y: 49)
+                    Rectangle().fill(.black).frame(width: 17, height: 7).offset(x: -20, y: 49)
+                    Rectangle().fill(.black).frame(width: 10, height: 4).offset(x: 20, y: 53)
+                    Rectangle().fill(.black).frame(width: 10, height: 4).offset(x: -20, y: 53)
+                    Rectangle().fill(.black).frame(width: 30, height: 5).offset(x: 0, y: 55)
                 }
-                .onTapGesture{
-                    hour+=1
-                    if minuteSeg==4{minuteSeg=0;hour+=1}
-                    if hour==24{hour=0}
-                }
-                HStack(spacing:12){
-                    Button("- Hour"){ hour = (hour+23)%24 }
-                    Button("/   + Hour"){ hour = (hour+1)%24 }
-                    Button("/   Next Minute"){minuteSeg = (minuteSeg+1)%4}
-                    Button("/   Random Hour"){ hour = Int.random(in: 0...23)}
+                .onTapGesture {
+                    minuteSeg = (minuteSeg + 1) % 4
+                    if minuteSeg == 0 { hour = (hour + 1) % 24 }
                 }
                 
+                HStack(spacing: 12) {
+                    Button("- Hour") { hour = (hour + 23) % 24 }
+                    Button("+ Hour") { hour = (hour + 1) % 24 }
+                    Button("Next Minute") { minuteSeg = (minuteSeg + 1) % 4 }
+                    Button("Random Hour") { hour = Int.random(in: 0...23) }
+                }
             }
             .padding()
         }
     }
-    
 }
-
-              
+            
 }</code></pre>
           </details>
         </article>
@@ -795,14 +760,16 @@ struct ContentView: View {
     @State var id = 0
     let maxID = 15
     
+    private var bits: [String] {
+        Array(decimalToBinary(id)).map { String($0) }
+    }
+    
     func decimalToBinary(_ number: Int) -> String {
         let powers = [8, 4, 2, 1]
         var n = number % 16
-        var bits = ""
-        for p in powers {
-            if n >= p { bits += "1"; n -= p } else { bits += "0" }
-        }
-        return bits
+        var s = ""
+        for p in powers { if n >= p { s += "1"; n -= p } else { s += "0" } }
+        return s
     }
     
     func enrollStudent(_ number: Int) {
@@ -814,12 +781,13 @@ struct ContentView: View {
             Color.black.ignoresSafeArea()
             VStack(spacing: 16) {
                 Text("4-Bit ID Counter").font(.title).foregroundColor(.white).bold()
+                
                 HStack {
                     Text("Decimal: \(id)").foregroundColor(.white)
                     Text("Binary: \(decimalToBinary(id))").foregroundColor(.white)
-                }.font(.title3) 
+                }
+                .font(.title3)
                 
-                let bits = Array(decimalToBinary(id)).map { String($0) }
                 HStack(spacing: 12) {
                     ForEach(0..<4, id: \.self) { i in
                         RoundedRectangle(cornerRadius: 14)
@@ -834,10 +802,7 @@ struct ContentView: View {
                         if id == maxID { id = 0; print("Overflow! Reset to 0") } else { id += 1 }
                         enrollStudent(id)
                     }
-                    
-                    Button("Reset (0)") {
-                        id = 0
-                    }
+                    Button("Reset (0)") { id = 0 }
                 }
                 
                 Button("Log to Console") {
@@ -1106,6 +1071,29 @@ struct ContentView: View {
 
               
 }</code></pre>
+          </details>
+        </article>
+      </div>
+    <article class="card">
+          <h3>Data Compression</h3>
+<img
+    src="https://canortn.github.io/images/Data_Compression.png"
+    alt="Screenshot of my reflection and answers" />
+      
+          <details>
+          </details>
+        </article>
+      </div>
+          </details>
+        </article>
+      </div>
+    <article class="card">
+          <h3>Extracting Information from Data</h3>
+<img
+    src="https://canortn.github.io/images/Extracting Information from Data.png"
+    alt="Screenshot of my reflection and answers" />
+      
+          <details>
           </details>
         </article>
       </div>
