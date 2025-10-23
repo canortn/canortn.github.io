@@ -1311,6 +1311,144 @@ struct ContentView_Previews: PreviewProvider {
           </details>
         </article>
       </div>
+                </div>
+           <article class="card">
+          <h3>SwiftUI Hot Chocolate Machine</h3>
+          <p>The Hot Chocolate Machine Code I Did With SwiftUI.</p>
+          <div class="video-container">
+          </div>
+          <div class="links"></div>
+          <details>
+            <summary>Show Swift code</summary>
+            <pre><code class="language-swift">import SwiftUI
+
+struct ContentView: View {
+    @State private var log: [String] = []
+    var body: some View {
+        VStack(spacing: 12) {
+            Text("Hot Chocolate Machine").font(.title2)
+            Button("Start Heating") {
+                log = hotChocolateMachine()
+            }
+            List(log, id: \.self) { Text($0) }
+        }
+        .padding()
+    }
+}
+
+func hotChocolateMachine() -> [String] {
+    let startTemp = 20
+    var currentTemp = startTemp
+    var out: [String] = []
+    for minute in 1...20 {
+        currentTemp += 5
+        out.append("Minute \(minute): \(currentTemp)°C")
+        if currentTemp < 50 {
+            out.append("→ The drink is still cold.")
+        } else if currentTemp <= 70 {
+            out.append("→ The drink is ready to serve!")
+        } else if currentTemp <= 80 {
+            out.append("→ Too hot! Wait before drinking.")
+        } else {
+            out.append("⚠ Machine auto-stop activated!")
+            break
+        }
+    }
+    let totalChange = currentTemp - startTemp
+    out.append("Total temperature change: \(totalChange)°C")
+    return out
+}
+
+              
+}</code></pre>
+          </details>
+        </article>
+      </div>
+                </div>
+           <article class="card">
+          <h3>SwiftUI Hot Chocolate Machine</h3>
+          <p>The Hot Chocolate Machine Code I Did With SwiftUI.</p>
+          <div class="video-container">
+          </div>
+          <div class="links"></div>
+          <details>
+            <summary>Show Swift code</summary>
+            <pre><code class="language-swift">import SwiftUI
+
+struct ContentView: View {
+    @State private var log: [String] = []
+    var body: some View {
+        VStack(spacing: 12) {
+            Text("Hot Chocolate Machine").font(.title2)
+            Button("Start Heating") {
+                log = hotChocolateMachine()
+            }
+            List(log, id: \.self) { Text($0) }
+        }
+        .padding()
+    }
+}
+
+func hotChocolateMachine() -> [String] {
+    let startTemp = 20
+    var currentTemp = startTemp
+    var out: [String] = []
+    for minute in 1...20 {
+        currentTemp += 5
+        out.append("Minute \(minute): \(currentTemp)°C")
+        if currentTemp < 50 {
+            out.append("→ The drink is still cold.")
+        } else if currentTemp <= 70 {
+            out.append("→ The drink is ready to serve!")
+        } else if currentTemp <= 80 {
+            out.append("→ Too hot! Wait before drinking.")
+        } else {
+            out.append("⚠ Machine auto-stop activated!")
+            break
+        }
+    }
+    let totalChange = currentTemp - startTemp
+    out.append("Total temperature change: \(totalChange)°C")
+    return out
+}
+
+              
+}</code></pre>
+          </details>
+             <details>
+            <summary>Show Pseudocode </summary>
+            <pre><code class="language-pseudocode">PROCEDURE hotChocolateMachine
+    SET startTemp ← 20
+    SET currentTemp ← startTemp
+
+    FOR minute ← 1 TO 20
+        SET currentTemp ← currentTemp + 5
+        DISPLAY "Minute " + minute + ": " + currentTemp + "°C"
+
+        IF currentTemp < 50 THEN
+            DISPLAY "→ The drink is still cold."
+        ELSE IF currentTemp <= 70 THEN
+            DISPLAY "→ The drink is ready to serve!"
+        ELSE IF currentTemp <= 80 THEN
+            DISPLAY "→ Too hot! Wait before drinking."
+        ELSE
+            DISPLAY "⚠ Machine auto-stop activated!"
+            BREAK
+        END IF
+    END FOR
+
+    SET totalChange ← currentTemp - startTemp
+    DISPLAY "Total temperature change: " + totalChange + "°C"
+END PROCEDURE
+
+CALL hotChocolateMachine
+
+
+              
+}</code></pre>
+          </details>
+        </article>
+      </div>
 
     </section>
 
