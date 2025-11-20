@@ -1493,7 +1493,113 @@ struct ContentView: View {
           </details>
         </article>
       </div>
-          
+  <article class="card">
+          <h3>World Clock V1</h3>
+          <p>The world clock of countries.</p>
+          <p>I chose this theme because it was simple, clear, and helped me organize the information I wanted to show.</p>
+          <p>By working with lists, I learned how to store multiple values in one structure and access or update them easily.</p>
+          <p>If my list had more items, the code would need more loops or conditions, but the logic would stay the same while the output would become longer.</p>
+          <div class="video-container">
+          </div>
+          <div class="links"></div>
+          <details>
+            <summary>Show Swift code</summary>
+            <pre><code class="language-swift">import SwiftUI
+struct ContentView: View {
+    let cities = [
+        "🇬🇧 London",
+        "🇹🇷 Istanbul",
+        "🇺🇸 New York",
+        "🇯🇵 Tokyo",
+        "🇫🇷 Paris",
+        "🇦🇺 Sydney"
+    ]    
+    var body: some View {
+        NavigationView {
+            List(cities, id: \.self) { city in
+                Text(city)
+                    .font(.title2)        
+                    .padding(.vertical, 4)
+            }
+            .navigationTitle("World Clock V1")
+        }
+    }
+}
+}</code></pre>
+          </details>
+        </article>
+      </div>
+<article class="card">
+          <h3>List Project Iceream</h3>
+          <p>The list of ice cream flavors that i did with SwiftUI.</p>
+          <div class="video-container" id="List Project ice cream video">
+          <iframe 
+            src="https://www.veed.io/view/31b0751a-1a14-4b42-81c0-a61083b7bef9?source=Homepage&panel=share" 
+            title="Big Idea 1 — Creative Development"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen>
+          </iframe>
+          <div class="links">
+            <a href="https://www.veed.io/view/31b0751a-1a14-4b42-81c0-a61083b7bef9?source=Homepage&panel=share" target="_blank" rel="noopener">Open in new tab</a>
+          <div class="links"></div>
+          <details>
+            <summary>Show Swift code</summary>
+            <pre><code class="language-swift">import SwiftUI
+
+struct Triangle: Shape {
+    func path(in rect: CGRect) -> Path {
+        var path = Path()
+        path.move(to: CGPoint(x: rect.midX, y: rect.maxY))
+        path.addLine(to: CGPoint(x: rect.minX, y: rect.minY))
+        path.addLine(to: CGPoint(x: rect.maxX, y: rect.minY))
+        path.closeSubpath()
+        return path
+    }
+}
+
+struct ContentView: View {
+    let flavors = [
+        "Banana",
+        "Vanilla",
+        "Chocolate",
+        "Blueberry",
+        "Strawberry",
+        "Caramel"
+    ]
+    let flavorColors: [String: Color] = [
+        "Banana": .yellow,
+        "Vanilla": .white,
+        "Chocolate": .brown,
+        "Blueberry": .blue,
+        "Strawberry": .red,
+        "Caramel": Color.orange.opacity(0.8)
+    ]
+    
+    var body: some View {
+        NavigationView {
+            ZStack(alignment: .bottom) {
+                
+                List(flavors, id: \.self) { flavor in
+                    Text(flavor)
+                        .font(.title2)
+                        .padding(.vertical, 4)
+                        .listRowBackground(flavorColors[flavor])  
+                }
+                
+                Triangle()
+                    .fill(.brown)
+                    .frame(width: 300, height: 200)
+                    .offset(y: -470)
+            }
+            .navigationTitle("Flavor Of Ice Creams")
+        }
+    }
+}
+}</code></pre>
+          </details>
+        </article>
+      </div>
     </section>
 
     <section id="big-ideas" class="page" data-title="Big Ideas — Can Ortanç">
