@@ -1449,7 +1449,51 @@ CALL hotChocolateMachine
           </details>
         </article>
       </div>
+<article class="card">
+          <h3>SwiftUI My Aray V1</h3>
+          <p>My Aray of games.</p>
+          <div class="video-container">
+          </div>
+          <div class="links"></div>
+          <details>
+            <summary>Show Swift code</summary>
+            <pre><code class="language-swift"> import SwiftUI
+struct ContentView: View {
+    let games = ["League Of Legends", "Fortnite", "FC 26", "Valorant"]
+    var body: some View {
+        VStack(spacing: 20) {
+            Text("My Array Map V1 – Gaming")
+                .font(.title2)
+                .padding(.bottom, 10)
+            ForEach(0..<games.count, id: \.self) { i in
+                RoundedRectangle(cornerRadius: 12)
+                    .stroke(Color.blue, lineWidth: 2)
+                    .frame(height: 60)
+                    .overlay(
+                        HStack {
+                            Text("Index \(i):")
+                                .font(.headline)
+                            Text(games[i])
+                                .font(.headline)
+                                .foregroundColor(.purple)
+                            
+                            Spacer()
+                        }
+                        
+                            .padding(.horizontal)
+                    )
+            }
+            Spacer()
+        }
+        .padding()
+    }   
+}
 
+}</code></pre>
+          </details>
+        </article>
+      </div>
+          
     </section>
 
     <section id="big-ideas" class="page" data-title="Big Ideas — Can Ortanç">
