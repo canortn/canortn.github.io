@@ -1713,7 +1713,6 @@ struct ContentView: View {
     <section id="documentation" class="page" data-title="Docs — Can Ortanç">
       <h2>Documentation</h2>
 
-      <!-- NEW card with your text -->
       <article class="card">
         <h3>How I Made This Website</h3>
         <p>The site uses simple HTML, CSS, and minimal JavaScript for navigation. The single-page menu updates the URL hash to show the selected section.I get help from Chat GPT's study mode, for example, at the very beginning from Beyza Hoca's study videos and Chat GPT's learning mode. I added MP4 videos and an index that manages all of my code menus and a bunch of stuff. For my Swift app, I included a collapsible code block so visitors can expand and view the code. GitHub Pages automatically updates the site when I commit changes, and my friends can get help from my GitHub page for their further use, as I did. And in this GitHub site creating and developing process, I want to give a shout out to my friends Ömer H., Mehmet B. and Cagan K. for helping me.</p>
@@ -1745,6 +1744,72 @@ struct ContentView: View {
         Program Function & Purpose and Identifying & Correcting Errors. I made the summary of Bid Idea 1 by
         using Beyza Teachers presentations and made a sum of it.
         </p>
+         </article>
+      <article class="card">
+          <h3>Unplugged to Coding: Cryptography Projects Documentation</h3>
+        <p lang="en">
+        The Vigner Cipher Code and Activity sheet i did.
+        </p>
+        <a href="https://docs.google.com/document/d/1-9ibRIIq-QxeG2-QoJpJ_sK2L6cRvLgBpGuL7X07Hdo/edit?tab=t.0#heading=h.etc2212y0t9">Open The Activity Sheet</a>
+        <a href="https://docs.google.com/document/d/1tu-Uirq0kfs7CZuEohAtCDgmCeBdT4Y1pIKPMuZdXBo/edit?tab=t.0#heading=h.etc2212y0t9">Open The Activity Sheet Answer Key</a>
+        <summary>Show Swift code</summary>
+            <pre><code class="language-swift">import SwiftUI
+
+struct ContentView: View {
+    @State private var plaintext = ""
+    @State private var key = ""
+    @State private var ciphertext = ""
+    var body: some View {
+        NavigationView {
+        Form {
+        Section("Input") {
+            TextField("Plaintext", text: $plaintext)
+                .textInputAutocapitalization(.never)
+            TextField("Key", text: $key)
+                .textInputAutocapitalization(.never)
+            }
+            
+            Button("Encrypt") {
+            ciphertext = vigenereEncrypt(text: plaintext, key: key)
+            }
+            
+            Section("Output") {
+                Text(ciphertext)
+                .font(.headline)
+            }
+        }
+        .navigationTitle("Vigenère Cipher")
+        }
+    }
+    
+    func vigenereEncrypt(text: String, key: String) -> String {
+        let alphabet = Array("ABCDEFGHIJKLMNOPQRSTUVWXYZ")
+        
+        var result = ""
+        
+        let keyArray = Array(key.uppercased())
+        
+        if keyArray.isEmpty { return text }
+        
+        var keyIndex = 0
+        
+        for char in text.uppercased() {
+        if let textIndex = alphabet.firstIndex(of: char),
+           let shift = alphabet.firstIndex(of: keyArray[keyIndex]) {
+
+                let newIndex = (textIndex + shift) % 26
+                result.append(alphabet[newIndex])
+                
+                keyIndex = (keyIndex + 1) % keyArray.count
+            } else {
+                result.append(char)
+            }
+        }
+        
+        return result
+    }
+}
+</code></pre>
          </article>
     </section>
   </main>
