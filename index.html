@@ -1618,6 +1618,72 @@ struct ContentView: View {
       </div>
         <article>
       <div>
+                   <article class="card">
+          <h3>SwiftUI Pixel Painter</h3>
+          <p>The Hot Pixel Painter Code I Did With SwiftUI.</p>
+          <div class="video-container">
+          </div>
+          <div class="links"></div>
+          <details>
+            <img
+    src="https://canortn.github.io/images/Pixel_Painter.png"
+    alt="Screenshot of the output />
+            <summary>Show Swift code</summary>
+            <pre><code class="language-swift">import SwiftUI
+
+struct ContentView: View {
+@State var cells = Array(0..<100)
+@State var colors = Array(repeating: Color.gray,count: 100)
+@State var inputText = ""
+    
+var body: some View {
+    VStack {
+        TextField("Enter cell 0-99", text: $inputText)
+            .keyboardType(.numberPad)
+            .textFieldStyle(.roundedBorder)
+            .padding()
+
+        Button("Paint") {
+            changeColor()
+        }
+        .padding()
+        drawGrid()
+        .padding()
+        }
+    }
+    func drawGrid() -> some View {
+    VStack(spacing: 2) {
+      ForEach(0..<10, id: \.self) { row in
+        HStack(spacing: 2) {
+            ForEach(0..<10, id: \.self) { col in
+                let index = row * 10 + col
+                    Rectangle()
+                    .fill(colors[index])
+                    .frame(width: 25, height: 25)
+                    }
+                }
+            }
+        }
+    }
+    
+    func changeColor() {
+        guard let n = Int(inputText) else {
+            print("Invalid input")
+            return
+        }
+        
+        if n >= 0 && n < cells.count {
+            colors[n] = .blue
+            print("Cell \(n) colored")
+        } else {
+            print("Invalid input")
+        }
+    }
+}
+
+              
+}</code></pre>
+          </details>
     </section>
 
     <section id="big-ideas" class="page" data-title="Big Ideas — Can Ortanç">
