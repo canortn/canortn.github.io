@@ -97,8 +97,8 @@
     .muted{color:var(--muted);font-size:14px}
 
     .grid{
-      display:flex;
-      flex-wrap:wrap;
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
       gap:16px;
       margin-top:8px;
     }
@@ -110,8 +110,6 @@
       padding:14px 14px 16px;
       box-shadow:var(--shadow);
       transition:transform .15s ease, box-shadow .15s ease;
-      flex:1 1 260px;
-      max-width:340px;
     }
 
     .card:hover{
@@ -229,18 +227,6 @@
       to{opacity:1;transform:translateY(0)}
     }
 
-    @media (max-width:900px){
-      .card{
-        max-width:calc(50% - 16px);
-      }
-    }
-
-    @media (max-width:600px){
-      .card{
-        max-width:100%;
-      }
-    }
-
     @media (max-width:640px){
       header{
         flex-direction:column;
@@ -267,6 +253,7 @@
   </header>
 
   <main>
+    <!-- HOME -->
     <section id="home" class="page" data-title="Home — Can Ortanç">
       <h2>Home</h2>
       <p class="muted">10. sınıf öğrencisi · Python / Web · Tasarım ve bilim meraklısı</p>
@@ -276,10 +263,12 @@
       </p>
     </section>
 
+    <!-- PROJECTS -->
     <section id="projects" class="page" data-title="Projects — Can Ortanç">
       <h2>Projects</h2>
 
       <div class="grid">
+        <!-- Scratch Tic Tac Toe -->
         <article class="card">
           <h3>Scratch Tic-Tac-Toe</h3>
           <p>The Tic-Tac-Toe game that I built in Scratch.</p>
@@ -288,6 +277,7 @@
           </div>
         </article>
 
+        <!-- SwiftUI Tic Tac Toe -->
         <article class="card">
           <h3>SwiftUI Tic-Tac-Toe</h3>
           <p>The Tic-Tac-Toe game I made with Swift code.</p>
@@ -385,6 +375,7 @@ struct ContentView: View {
           </details>
         </article>
 
+        <!-- SwiftUI Calculator -->
         <article class="card">
           <h3>SwiftUI Calculator</h3>
           <p>The calculator I made with Swift.</p>
@@ -440,6 +431,7 @@ struct ContentView: View {
           </details>
         </article>
 
+        <!-- SwiftUI Portrait -->
         <article class="card">
           <h3>SwiftUI Portrait</h3>
           <p>A simple portrait made with SwiftUI shapes.</p>
@@ -493,6 +485,7 @@ struct ContentView: View {
           </details>
         </article>
 
+        <!-- Clock v1 -->
         <article class="card">
           <h3>SwiftUI Clock v1</h3>
           <p>The first version of my SwiftUI clock.</p>
@@ -578,6 +571,7 @@ struct ContentView: View {
           </details>
         </article>
 
+        <!-- Clock v2 -->
         <article class="card">
           <h3>SwiftUI Clock v2</h3>
           <p>The second version of my interactive clock.</p>
@@ -698,6 +692,7 @@ struct ContentView: View {
           </details>
         </article>
 
+        <!-- Clock v3–5 -->
         <article class="card">
           <h3>SwiftUI Clock v3–5 (Mickey Clock)</h3>
           <p>The Mickey Mouse themed clock I designed.</p>
@@ -835,6 +830,7 @@ struct ContentView: View {
           </details>
         </article>
 
+        <!-- 4-bit Counter -->
         <article class="card">
           <h3>SwiftUI 4-Bit Binary Counter</h3>
           <p>The 4-bit counter I made with SwiftUI, from 0–15.</p>
@@ -929,6 +925,7 @@ struct ContentView: View {
           </details>
         </article>
 
+        <!-- Ice Cream Game -->
         <article class="card">
           <h3>SwiftUI Ice Cream Game</h3>
           <p>An interactive ice cream cone with up to 5 scoops.</p>
@@ -1038,6 +1035,7 @@ struct ContentView: View {
           </details>
         </article>
 
+        <!-- Clock Game -->
         <article class="card">
           <h3>SwiftUI Clock Game</h3>
           <p>A mini game where you move a player before the timer runs out.</p>
@@ -1178,6 +1176,7 @@ struct ContentView: View {
           </details>
         </article>
 
+        <!-- Data Compression -->
         <article class="card">
           <h3>Data Compression</h3>
           <img
@@ -1185,6 +1184,7 @@ struct ContentView: View {
             alt="Screenshot of my data compression reflection and answers" />
         </article>
 
+        <!-- Extracting Information from Data -->
         <article class="card">
           <h3>Extracting Information from Data</h3>
           <img
@@ -1192,6 +1192,7 @@ struct ContentView: View {
             alt="Screenshot of my data extraction reflection and answers" />
         </article>
 
+        <!-- Candy Shop -->
         <article class="card">
           <h3>SwiftUI Candy Shop Simulation</h3>
           <p>A small console-style simulation about candy stock, prices, and best sellers.</p>
@@ -1242,7 +1243,7 @@ struct ContentView: View {
                      ("Gummy", soldGummy),
                      ("Lollipop", soldLollipop),
                      ("Caramel", soldCaramel)]
-            return a.max { $0.1 &lt; $1.1 }?.0 ?? "None"
+            return a.max { $0.1 < $1.1 }?.0 ?? "None"
         }
 
         func lowStockList(_ t: Int) -> [String] {
@@ -1319,6 +1320,7 @@ struct ContentView: View {
           </details>
         </article>
 
+        <!-- Hot Chocolate Machine + Pseudocode -->
         <article class="card">
           <h3>SwiftUI Hot Chocolate Machine</h3>
           <p>A temperature-based simulation with both SwiftUI code and pseudocode.</p>
@@ -1350,7 +1352,7 @@ func hotChocolateMachine() -> [String] {
         currentTemp += 5
         out.append("Minute \(minute): \(currentTemp)°C")
 
-        if currentTemp &lt; 50 {
+        if currentTemp < 50 {
             out.append("→ The drink is still cold.")
         } else if currentTemp <= 70 {
             out.append("→ The drink is ready to serve!")
@@ -1378,7 +1380,7 @@ func hotChocolateMachine() -> [String] {
         SET currentTemp ← currentTemp + 5
         DISPLAY "Minute " + minute + ": " + currentTemp + "°C"
 
-        IF currentTemp &lt; 50 THEN
+        IF currentTemp < 50 THEN
             DISPLAY "→ The drink is still cold."
         ELSE IF currentTemp ≤ 70 THEN
             DISPLAY "→ The drink is ready to serve!"
@@ -1398,6 +1400,7 @@ CALL hotChocolateMachine</code></pre>
           </details>
         </article>
 
+        <!-- My Array V1 -->
         <article class="card">
           <h3>SwiftUI My Array V1</h3>
           <p>A simple array of my favorite games.</p>
@@ -1438,6 +1441,7 @@ struct ContentView: View {
           </details>
         </article>
 
+        <!-- World Clock -->
         <article class="card">
           <h3>World Clock V1</h3>
           <p>A simple list of cities for a world clock.</p>
@@ -1470,6 +1474,7 @@ struct ContentView: View {
           </details>
         </article>
 
+        <!-- Ice Cream List Project -->
         <article class="card">
           <h3>List Project — Ice Cream</h3>
           <p>A SwiftUI list of ice cream flavors with colors and a cone.</p>
@@ -1543,6 +1548,7 @@ struct ContentView: View {
           </details>
         </article>
 
+        <!-- Design Challenge v1 -->
         <article class="card">
           <h3>Swift Design Challenge v1 — Figma</h3>
           <p><strong>Reflection:</strong> Nadin, who graduated from Hisar, inspired me because she proved that one simple idea can grow into a powerful project.</p>
@@ -1557,6 +1563,7 @@ struct ContentView: View {
           </div>
         </article>
 
+        <!-- Pixel Painter -->
         <article class="card">
           <h3>SwiftUI Pixel Painter</h3>
           <p>A 10×10 pixel grid where I can paint a cell by index.</p>
@@ -1621,6 +1628,7 @@ struct ContentView: View {
           </details>
         </article>
 
+        <!-- Big Idea 3 Review Part I Projects -->
         <article class="card">
           <h3>Big Idea 3 Review — Code Projects</h3>
           <p>A small collection of AP CSP practice Swift Playgrounds projects.</p>
@@ -1636,7 +1644,8 @@ struct ContentView: View {
             </a>
           </div>
         </article>
-          
+
+        <!-- Design Challenge v2 -->
         <article class="card">
           <h3>Swift Design Challenge v2 — Figma</h3>
           <p><strong>Reflection:</strong> The updated design has cleaner layout and new animations.</p>
@@ -1662,6 +1671,7 @@ struct ContentView: View {
           </div>
         </article>
 
+        <!-- My Initials -->
         <article class="card">
           <h3>SwiftUI My Name’s Initials</h3>
           <p>My initials (C and O) drawn with a 10×10 dot grid.</p>
@@ -1733,6 +1743,7 @@ struct ContentView: View {
       </div>
     </section>
 
+    <!-- BIG IDEAS -->
     <section id="big-ideas" class="page" data-title="Big Ideas — Can Ortanç">
       <h2>Big Idea 1 — Creative Development</h2>
 
@@ -1828,6 +1839,7 @@ struct ContentView: View {
       </article>
     </section>
 
+    <!-- DOCUMENTATION -->
     <section id="documentation" class="page" data-title="Docs — Can Ortanç">
       <h2>Documentation</h2>
 
