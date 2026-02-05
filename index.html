@@ -1957,6 +1957,142 @@ struct ContentView: View {
           </details>
         </article>
       </div>
+
+        <article class="card">
+          <h3>SwiftUI Rock Paper Scicors</h3>
+          <p>My initials (C and O) drawn with a 10×10 dot grid.</p>
+          <details>
+            <summary>Show Innerface code</summary>
+            <pre><code class="language-swift">import SwiftUI
+
+struct ContentView: View {
+    
+    let game = GameLogic()
+    @State var userChoice = "—"
+    @State var computerChoice = "—"
+    @State var resultText = "Seçimini yap"
+    @State var hasPlayed = false
+    @State var win = ""
+    @State var lose = ""
+    @State var tie = ""
+    
+    
+    var body: some View {
+        VStack(spacing: 24) {
+            Text("Taş Kağıt Makas")
+                .font(.title)
+                .bold()
+            
+            HStack(spacing: 24) {
+                VStack(spacing: 6) {
+                    Text("Sen")
+                        .font(.subheadline)
+                        .foregroundColor(.secondary)
+                    Text(userChoice)
+                        .font(.system(size: 52))
+                }
+                
+                VStack(spacing: 6) {
+                    Text("PC")
+                        .font(.subheadline)
+                        .foregroundColor(.secondary)
+                    Text(computerChoice)
+                        .font(.system(size: 52))
+                }
+            }
+            
+            Text(resultText)
+                .font(.headline)
+            
+            HStack(spacing: 14) {
+                ForEach(game.choices, id: \.self) { emoji in
+                    Button {
+                        play(user: emoji)
+                    } label: {
+                        Text(emoji)
+                            .font(.system(size: 44))
+                            .frame(width: 72, height: 60)
+                    }
+                    .buttonStyle(.bordered)
+                    .disabled(hasPlayed)
+                }
+            }
+            
+            if hasPlayed {
+                Button("Play Again") {
+                    playAgain()
+                }
+                .buttonStyle(.borderedProminent)
+                .padding(.top, 6)
+            }
+            
+            Spacer()
+        }
+        .padding()
+    }
+    
+    private func play(user: String) {
+        guard !hasPlayed else { return }
+        
+        userChoice = user
+        computerChoice = game.randomComputerChoice()
+        
+        let outcome = game.determineWinner(
+            userChoice: userChoice,
+            computerChoice: computerChoice
+        )
+        
+        resultText = outcome.text
+        hasPlayed = true
+    }
+    
+    private func playAgain() {
+        userChoice = "—"
+        computerChoice = "—"
+        resultText = "Seçimini yap"
+        hasPlayed = false
+    }
+}
+</code></pre>
+            <summary>Show Logic code</summary>
+            <pre><code class="language-swift">import Foundation
+
+struct GameLogic {
+    let choices = ["✊", "✋", "✌️"]
+    
+    enum Outcome {
+        case win, lose, tie
+        
+        var text: String {
+            switch self {
+            case .win: return "Kazandın!"
+            case .lose: return "Kaybettin!"
+            case .tie: return "Berabere!"
+            }
+        }
+    }
+    
+    func randomComputerChoice() -> String {
+        choices.randomElement() ?? "✊"
+    }
+    
+    func determineWinner(userChoice: String, computerChoice: String) -> Outcome {
+        if userChoice == computerChoice { return .tie }
+        
+        if (userChoice == "✊" && computerChoice == "✌️") ||
+            (userChoice == "✋" && computerChoice == "✊") ||
+            (userChoice == "✌️" && computerChoice == "✋") {
+            return .win
+        } else {
+            return .lose
+        }
+    }
+}
+
+</code></pre>
+          </details>
+        </article>
+      </div>
     </section>
 
     <section id="big-ideas" class="page" data-title="Big Ideas — Can Ortanç">
