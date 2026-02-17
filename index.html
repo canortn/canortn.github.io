@@ -272,9 +272,6 @@
       <h2>Projects</h2>
 
       <div class="grid">
-        <!-- (Projects kısmını senin mevcut halinden olduğu gibi bıraktım.
-             Burada asıl sorun projects-2 ve docs kısmındaydı.) -->
-
         <article class="card">
           <h3>Scratch Tic-Tac-Toe</h3>
           <p>The Tic-Tac-Toe game that I built in Scratch.</p>
@@ -283,18 +280,916 @@
           </div>
         </article>
 
-        <!-- ... diğer project card’ların burada devam edebilir ... -->
+        <article class="card">
+          <h3>SwiftUI Tic-Tac-Toe</h3>
+          <p>The Tic-Tac-Toe game I made with Swift code.</p>
+          <div class="video-container">
+            <video controls preload="metadata" playsinline>
+              <source src="assets/swift-tictactoe.mp4" type="video/mp4" />
+            </video>
+          </div>
+          <details>
+            <summary>Show Swift code</summary>
+            <pre><code class="language-swift">import SwiftUI
 
-      </div>
-    </section>
+struct ContentView: View {
+    @State var player = "X"
+    @State var message1 = ""
+    @State var message2 = ""
+    @State var message3 = ""
+    @State var message4 = ""
+    @State var message5 = ""
+    @State var message6 = ""
+    @State var message7 = ""
+    @State var message8 = ""
+    @State var message9 = ""
+    @State var gameOver = false
+    @State var statusText = ""
 
-    <!-- ✅ projects-2: grid yapısını tek parça yaptım (fazla </div> / </article> temizlendi) -->
-    <section id="projects-2" class="page" data-title="Projects - 2 — Can Ortanç">
-      <h2>Projects - 2</h2>
+    var body: some View {
+        VStack(spacing: 20) {
+            Text(statusText.isEmpty ? "Sıra: \(player)" : statusText)
+                .font(.title3)
+                .padding(.top, 8)
 
-      <div class="grid">
+            HStack(spacing: 20) {
+                tileView(text: $message1)
+                tileView(text: $message2)
+                tileView(text: $message3)
+            }
+
+            HStack(spacing: 20) {
+                tileView(text: $message4)
+                tileView(text: $message5)
+                tileView(text: $message6)
+            }
+
+            HStack(spacing: 20) {
+                tileView(text: $message7)
+                tileView(text: $message8)
+                tileView(text: $message9)
+            }
+
+            Button("Restart") { resetBoard() }
+                .padding(.top, 8)
+        }
+    }
+
+    func tileView(text: Binding&lt;String&gt;) -&gt; some View {
+        ZStack {
+            Rectangle()
+                .fill(Color.blue)
+                .frame(width: 120, height: 120)
+                .onTapGesture {
+                    if !gameOver, text.wrappedValue.isEmpty {
+                        text.wrappedValue = player
+                        checkWinner()
+                        if !gameOver {
+                            player = (player == "X") ? "O" : "X"
+                        }
+                    }
+                }
+            Text(text.wrappedValue)
+                .font(.title2)
+                .foregroundColor(.white)
+        }
+    }
+
+    func checkWinner() {
+        if message1 != "" && message1 == message2 && message2 == message3 { statusText = "\(message1) kazandı!"; gameOver = true }
+        else if message4 != "" && message4 == message5 && message5 == message6 { statusText = "\(message4) kazandı!"; gameOver = true }
+        else if message7 != "" && message7 == message8 && message8 == message9 { statusText = "\(message7) kazandı!"; gameOver = true }
+        else if message1 != "" && message1 == message4 && message4 == message7 { statusText = "\(message1) kazandı!"; gameOver = true }
+        else if message2 != "" && message2 == message5 && message5 == message8 { statusText = "\(message2) kazandı!"; gameOver = true }
+        else if message3 != "" && message3 == message6 && message6 == message9 { statusText = "\(message3) kazandı!"; gameOver = true }
+        else if message1 != "" && message1 == message5 && message5 == message9 { statusText = "\(message1) kazandı!"; gameOver = true }
+        else if message3 != "" && message3 == message5 && message5 == message7 { statusText = "\(message3) kazandı!"; gameOver = true }
+        else if [message1,message2,message3,message4,message5,message6,message7,message8,message9].allSatisfy({ !$0.isEmpty }) { statusText = "Berabere!"; gameOver = true }
+    }
+
+    func resetBoard() {
+        message1 = ""; message2 = ""; message3 = ""
+        message4 = ""; message5 = ""; message6 = ""
+        message7 = ""; message8 = ""; message9 = ""
+        player = "X"; statusText = ""; gameOver = false
+    }
+}</code></pre>
+          </details>
+        </article>
 
         <article class="card">
+          <h3>SwiftUI Calculator</h3>
+          <p>The calculator I made with Swift.</p>
+          <details>
+            <summary>Show Swift code</summary>
+            <pre><code class="language-swift">import SwiftUI
+
+struct ContentView: View {
+    @State var n1 = ""
+    @State var n2 = ""
+    @State var result = 0
+
+    var body: some View {
+        VStack(spacing: 12) {
+            Text("Simple Calculator")
+                .font(.title2)
+
+            TextField("Enter first number", text: $n1)
+                .textFieldStyle(.roundedBorder)
+
+            TextField("Enter second number", text: $n2)
+                .textFieldStyle(.roundedBorder)
+
+            HStack(spacing: 15) {
+                Button("+") {
+                    if let a = Int(n1), let b = Int(n2) {
+                        result = a + b
+                    }
+                }
+                Button("-") {
+                    if let a = Int(n1), let b = Int(n2) {
+                        result = a - b
+                    }
+                }
+                Button("*") {
+                    if let a = Int(n1), let b = Int(n2) {
+                        result = a * b
+                    }
+                }
+                Button("/") {
+                    if let a = Int(n1), let b = Int(n2), b != 0 {
+                        result = a / b
+                    }
+                }
+            }
+            .buttonStyle(.borderedProminent)
+
+            Text("Result: \(result)")
+        }
+        .padding()
+    }
+}</code></pre>
+          </details>
+        </article>
+
+        <article class="card">
+          <h3>SwiftUI Portrait</h3>
+          <p>A simple portrait made with SwiftUI shapes.</p>
+          <details>
+            <summary>Show Swift code</summary>
+            <pre><code class="language-swift">import SwiftUI
+
+struct ContentView: View {
+    var body: some View {
+        ZStack {
+            Capsule()
+                .frame(width: 170, height: 250)
+                .foregroundStyle(Color.brown)
+
+            Capsule()
+                .frame(width: 125, height: 100)
+                .offset(y: -105)
+                .offset(x: -40)
+                .foregroundStyle(Color.yellow)
+
+            Capsule()
+                .frame(width: 125, height: 100)
+                .offset(y: -105)
+                .offset(x: 40)
+                .foregroundStyle(Color.yellow)
+
+            Rectangle()
+                .frame(width: 80, height: 165)
+                .offset(y: 175)
+                .foregroundStyle(Color.brown)
+
+            Rectangle()
+                .frame(width: 300, height: 250)
+                .offset(y: 350)
+                .foregroundStyle(Color.white)
+
+            Capsule()
+                .frame(width: 25, height: 30)
+                .foregroundStyle(Color.cyan)
+                .offset(y: -25)
+                .offset(x: -39)
+
+            Capsule()
+                .frame(width: 25, height: 30)
+                .foregroundStyle(Color.cyan)
+                .offset(y: -25)
+                .offset(x: 39)
+        }
+    }
+}</code></pre>
+          </details>
+        </article>
+
+        <article class="card">
+          <h3>SwiftUI Clock v1</h3>
+          <p>The first version of my SwiftUI clock.</p>
+          <details>
+            <summary>Show Swift code</summary>
+            <pre><code class="language-swift">import SwiftUI
+
+struct ContentView: View {
+    @State var hour = 13
+    @State var minuteSeg = 0
+
+    var hourAngle: Double {
+        let h = hour % 12
+        let base = Double(h) * 30
+        let step = Double(minuteSeg) * 7.5
+        return (h == 0 && minuteSeg == 0) ? 0 : base + step
+    }
+
+    var body: some View {
+        VStack(spacing: 16) {
+            Text("Time: \(hour)")
+            ZStack {
+                if hour &lt; 12 {
+                    Circle()
+                        .fill(.yellow)
+                        .opacity(0.8)
+                        .overlay(Circle().stroke(.white, lineWidth: 4))
+                        .frame(width: 200, height: 200)
+                } else {
+                    Circle()
+                        .fill(.blue)
+                        .opacity(0.8)
+                        .overlay(Circle().stroke(.white, lineWidth: 4))
+                        .frame(width: 200, height: 200)
+                }
+
+                Group {
+                    if minuteSeg == 0 {
+                        Rectangle()
+                            .fill(.white)
+                            .frame(width: 5, height: 80)
+                            .offset(x: 0, y: -43)
+                    } else if minuteSeg == 1 {
+                        Rectangle()
+                            .fill(.white)
+                            .frame(width: 80, height: 5)
+                            .offset(x: 43, y: 0)
+                    } else if minuteSeg == 2 {
+                        Rectangle()
+                            .fill(.white)
+                            .frame(width: 5, height: 80)
+                            .offset(x: 0, y: 43)
+                    } else {
+                        Rectangle()
+                            .fill(.white)
+                            .frame(width: 80, height: 5)
+                            .offset(x: -43, y: 0)
+                    }
+                }
+
+                Circle()
+                    .fill(.white)
+                    .frame(width: 10, height: 10)
+
+                Rectangle()
+                    .fill(.white)
+                    .frame(width: 8, height: 40)
+                    .offset(x: 0, y: -25)
+                    .rotationEffect(.degrees(hourAngle))
+            }
+            .onTapGesture {
+                minuteSeg += 1
+                if minuteSeg == 4 {
+                    minuteSeg = 0
+                    hour += 1
+                }
+                if hour == 24 { hour = 0 }
+            }
+        }
+        .padding()
+    }
+}</code></pre>
+          </details>
+        </article>
+
+        <article class="card">
+          <h3>SwiftUI Clock v2</h3>
+          <p>The second version of my interactive clock.</p>
+          <p><strong>Reflection:</strong></p>
+          <p>1. <strong>Button vs .onTapGesture:</strong> Button has built-in accessibility and visual feedback; .onTapGesture is just a gesture recognizer.</p>
+          <p>2. <strong>Multiple inputs:</strong> Good for accessibility, different devices, and user preference.</p>
+          <p>3. <strong>Most natural input:</strong> Usually a Button, because it's self-describing and clear.</p>
+          <p>4. <strong>Event-driven:</strong> Input triggers state changes (@State), which re-renders the UI.</p>
+          <details>
+            <summary>Show Swift code</summary>
+            <pre><code class="language-swift">import SwiftUI
+
+struct ContentView: View {
+    @State var hour = 0
+    @State var minuteSeg = 0
+
+    var hourAngle: Double {
+        let h = hour % 12
+        return (h == 0 && minuteSeg == 0) ? 0 : Double(h) * 30 + Double(minuteSeg) * 7.5
+    }
+
+    var body: some View {
+        ZStack {
+            (hour &lt; 12 ? Color.white : Color.gray).ignoresSafeArea()
+
+            VStack(spacing: 16) {
+                Text("Time: \(hour)")
+                    .foregroundColor(hour &lt; 12 ? .black : .white)
+
+                HStack(spacing: 20) {
+                    Circle()
+                        .fill(.black)
+                        .overlay(Circle().stroke(.black, lineWidth: 4))
+                        .offset(y: 70)
+                        .frame(width: 150, height: 100)
+
+                    Circle()
+                        .fill(.black)
+                        .overlay(Circle().stroke(.black, lineWidth: 4))
+                        .offset(y: 70)
+                        .frame(width: 150, height: 100)
+                }
+
+                ZStack {
+                    if hour &lt; 12 {
+                        Circle()
+                            .fill(.white)
+                            .overlay(Circle().stroke(.black, lineWidth: 4))
+                            .frame(width: 200, height: 200)
+
+                        Ellipse()
+                            .fill(.yellow)
+                            .frame(width: 30, height: 80)
+                            .offset(x: 43, y: -25)
+
+                        Ellipse()
+                            .fill(.yellow)
+                            .frame(width: 30, height: 80)
+                            .offset(x: -43, y: -25)
+                    } else {
+                        Circle()
+                            .fill(.white)
+                            .overlay(Circle().stroke(.black, lineWidth: 4))
+                            .frame(width: 200, height: 200)
+
+                        Ellipse()
+                            .fill(.blue)
+                            .frame(width: 30, height: 80)
+                            .offset(x: 43, y: -25)
+
+                        Ellipse()
+                            .fill(.blue)
+                            .frame(width: 30, height: 80)
+                            .offset(x: -43, y: -25)
+                    }
+
+                    Group {
+                        if minuteSeg == 0 {
+                            Rectangle().fill(.black).frame(width: 5, height: 80).offset(x: 0, y: -43)
+                        } else if minuteSeg == 1 {
+                            Rectangle().fill(.black).frame(width: 80, height: 5).offset(x: 43, y: 0)
+                        } else if minuteSeg == 2 {
+                            Rectangle().fill(.black).frame(width: 5, height: 80).offset(x: 0, y: 43)
+                        } else {
+                            Rectangle().fill(.black).frame(width: 80, height: 5).offset(x: -43, y: 0)
+                        }
+                    }
+
+                    Rectangle()
+                        .fill(.black)
+                        .frame(width: 8, height: 40)
+                        .offset(x: 0, y: -25)
+                        .rotationEffect(.degrees(hourAngle))
+
+                    Circle()
+                        .fill(.black)
+                        .frame(width: 10, height: 10)
+                }
+                .onTapGesture {
+                    minuteSeg += 1
+                    if minuteSeg == 4 {
+                        minuteSeg = 0
+                        hour += 1
+                    }
+                    if hour == 24 { hour = 0 }
+                }
+
+                HStack(spacing: 12) {
+                    Button("- Hour") { hour = (hour + 23) % 24 }
+                    Button("+ Hour") { hour = (hour + 1) % 24 }
+                    Button("Next Minute") { minuteSeg = (minuteSeg + 1) % 4 }
+                }
+            }
+            .padding()
+        }
+    }
+}</code></pre>
+          </details>
+        </article>
+
+        <article class="card">
+          <h3>SwiftUI Clock v3–5 (Mickey Clock)</h3>
+          <p>The Mickey Mouse themed clock I designed.</p>
+          <p><strong>Target audience:</strong> Children around the world who love Mickey Mouse.</p>
+          <p><strong>Design choices:</strong> Bright colors and a clear Mickey face with ears, eyes and mouth.</p>
+          <p><strong>Research (FigJam):</strong> Helped me test ideas and choose a simpler final design.</p>
+          <p><strong>Most challenging:</strong> Debugging the interactive code.</p>
+          <p><strong>If I had more time:</strong> I’d add animations and a button that changes Mickey to Minnie.</p>
+          <div class="links">
+            <a class="chip-link" href="https://www.figma.com/board/4xzTyeFmu8zwE6ZukUTlxr/CS-Project-Clock-V3?node-id=0-1&p=f" target="_blank" rel="noopener">
+              Open design in Figma
+            </a>
+          </div>
+          <details>
+            <summary>Show Swift code</summary>
+            <pre><code class="language-swift">import SwiftUI
+
+struct ContentView: View {
+    @State var hour = 0
+    @State var minuteSeg = 0
+
+    var hourAngle: Double {
+        let h = hour % 12
+        return (h == 0 && minuteSeg == 0) ? 0 : Double(h) * 30 + Double(minuteSeg) * 7.5
+    }
+
+    var body: some View {
+        ZStack {
+            (hour &lt; 12 ? Color.white : Color.gray).ignoresSafeArea()
+
+            VStack(spacing: 16) {
+                Text("Time: \(hour)")
+                    .foregroundColor(hour &lt; 12 ? .black : .white)
+
+                HStack(spacing: 20) {
+                    Circle()
+                        .fill(.black)
+                        .overlay(Circle().stroke(.black, lineWidth: 4))
+                        .offset(y: 70)
+                        .frame(width: 150, height: 100)
+
+                    Circle()
+                        .fill(.black)
+                        .overlay(Circle().stroke(.black, lineWidth: 4))
+                        .offset(y: 70)
+                        .frame(width: 150, height: 100)
+                }
+
+                ZStack {
+                    if hour &lt; 12 {
+                        Circle()
+                            .fill(.white)
+                            .overlay(Circle().stroke(.black, lineWidth: 4))
+                            .frame(width: 200, height: 200)
+
+                        Ellipse()
+                            .fill(.yellow)
+                            .frame(width: 30, height: 80)
+                            .offset(x: 43, y: -25)
+
+                        Ellipse()
+                            .fill(.yellow)
+                            .frame(width: 30, height: 80)
+                            .offset(x: -43, y: -25)
+                    } else {
+                        Circle()
+                            .fill(.white)
+                            .overlay(Circle().stroke(.black, lineWidth: 4))
+                            .frame(width: 200, height: 200)
+
+                        Ellipse()
+                            .fill(.blue)
+                            .frame(width: 30, height: 80)
+                            .offset(x: 43, y: -25)
+
+                        Ellipse()
+                            .fill(.blue)
+                            .frame(width: 30, height: 80)
+                            .offset(x: -43, y: -25)
+                    }
+
+                    GeometryReader { geo in
+                        let centerX = geo.size.width / 2
+                        let centerY = geo.size.height / 2
+                        let radius: CGFloat = 80
+
+                        ForEach(1...12, id: \.self) { number in
+                            Text("\(number)")
+                                .font(.title3)
+                                .foregroundColor(.black)
+                                .position(
+                                    x: centerX + radius * cos(CGFloat(number) * .pi / 6 - .pi/2),
+                                    y: centerY + radius * sin(CGFloat(number) * .pi / 6 - .pi/2)
+                                )
+                        }
+                    }
+                    .frame(width: 200, height: 200)
+
+                    Group {
+                        if minuteSeg == 0 {
+                            Rectangle().fill(.black).frame(width: 5, height: 80).offset(x: 0, y: -43)
+                        } else if minuteSeg == 1 {
+                            Rectangle().fill(.black).frame(width: 80, height: 5).offset(x: 43, y: 0)
+                        } else if minuteSeg == 2 {
+                            Rectangle().fill(.black).frame(width: 5, height: 80).offset(x: 0, y: 43)
+                        } else {
+                            Rectangle().fill(.black).frame(width: 80, height: 5).offset(x: -43, y: 0)
+                        }
+                    }
+
+                    Rectangle()
+                        .fill(.black)
+                        .frame(width: 8, height: 40)
+                        .offset(x: 0, y: -25)
+                        .rotationEffect(.degrees(hourAngle))
+
+                    Circle().fill(.black).frame(width: 10, height: 10)
+                }
+                .onTapGesture {
+                    minuteSeg = (minuteSeg + 1) % 4
+                    if minuteSeg == 0 { hour = (hour + 1) % 24 }
+                }
+
+                HStack(spacing: 12) {
+                    Button("- Hour") { hour = (hour + 23) % 24 }
+                    Button("+ Hour") { hour = (hour + 1) % 24 }
+                    Button("Next Minute") { minuteSeg = (minuteSeg + 1) % 4 }
+                    Button("Random Hour") { hour = Int.random(in: 0...23) }
+                }
+            }
+            .padding()
+        }
+    }
+}</code></pre>
+          </details>
+        </article>
+
+        <article class="card">
+          <h3>SwiftUI 4-Bit Binary Counter</h3>
+          <p>The 4-bit counter I made with SwiftUI, from 0–15.</p>
+          <p class="muted">
+            It shows the value in decimal and 4-bit binary. I used a simple decimalToBinary function and managed state with +1 and Reset.
+            If I had more time I would add a 5-bit toggle and presets like “Set ID = 7”.
+          </p>
+          <img
+            src="https://canortn.github.io/images/bit counter.png"
+            alt="Screenshot of my 4-bit ID counter interface" />
+          <details>
+            <summary>Show Swift code</summary>
+            <pre><code class="language-swift">import SwiftUI
+
+struct ContentView: View {
+    @State var id = 0
+    let maxID = 15
+
+    private var bits: [String] {
+        Array(decimalToBinary(id)).map { String($0) }
+    }
+
+    func decimalToBinary(_ number: Int) -> String {
+        let powers = [8, 4, 2, 1]
+        var n = number % 16
+        var s = ""
+        for p in powers {
+            if n >= p {
+                s += "1"
+                n -= p
+            } else {
+                s += "0"
+            }
+        }
+        return s
+    }
+
+    func enrollStudent(_ number: Int) {
+        print("Student enrolled with ID:", number)
+    }
+
+    var body: some View {
+        ZStack {
+            Color.black.ignoresSafeArea()
+            VStack(spacing: 16) {
+                Text("4-Bit ID Counter")
+                    .font(.title)
+                    .foregroundColor(.white)
+                    .bold()
+
+                HStack {
+                    Text("Decimal: \(id)").foregroundColor(.white)
+                    Text("Binary: \(decimalToBinary(id))").foregroundColor(.white)
+                }
+                .font(.title3)
+
+                HStack(spacing: 12) {
+                    ForEach(0..<4, id: \.self) { i in
+                        RoundedRectangle(cornerRadius: 14)
+                            .fill(bits[i] == "1" ? Color.green : Color.gray.opacity(0.6))
+                            .frame(width: 68, height: 68)
+                            .overlay(
+                                Text(bits[i])
+                                    .font(.title)
+                                    .bold()
+                                    .foregroundColor(.white)
+                            )
+                    }
+                }
+
+                HStack(spacing: 24) {
+                    Button("Enroll (+1)") {
+                        if id == maxID {
+                            id = 0
+                            print("Overflow! Reset to 0")
+                        } else {
+                            id += 1
+                        }
+                        enrollStudent(id)
+                    }
+                    Button("Reset (0)") { id = 0 }
+                }
+
+                Button("Log to Console") {
+                    print("Decimal:", id, "Binary:", decimalToBinary(id))
+                }
+            }
+            .padding()
+        }
+    }
+}</code></pre>
+          </details>
+        </article>
+
+        <article class="card">
+          <h3>SwiftUI Ice Cream Game</h3>
+          <p>An interactive ice cream cone with up to 5 scoops.</p>
+          <details>
+            <summary>Show Swift code</summary>
+            <pre><code class="language-swift">import SwiftUI
+
+struct Triangle: Shape {
+    func path(in rect: CGRect) -> Path {
+        var path = Path()
+        path.move(to: CGPoint(x: rect.midX, y: rect.maxY))
+        path.addLine(to: CGPoint(x: rect.minX, y: rect.minY))
+        path.addLine(to: CGPoint(x: rect.maxX, y: rect.minY))
+        path.closeSubpath()
+        return path
+    }
+}
+
+struct ContentView: View {
+    @State private var scoop1: Color? = nil
+    @State private var scoop2: Color? = nil
+    @State private var scoop3: Color? = nil
+    @State private var scoop4: Color? = nil
+    @State private var scoop5: Color? = nil
+    @State private var count = 0
+
+    var body: some View {
+        VStack(spacing: 16) {
+            Text("Scoops: \(count)")
+                .font(.title2)
+
+            let scoopSize: CGFloat = 110
+            let step: CGFloat = 36
+
+            ZStack {
+                Triangle()
+                    .fill(.brown)
+                    .frame(width: 120, height: 150)
+                    .offset(y: 70)
+
+                if let c = scoop1 {
+                    Circle()
+                        .fill(c)
+                        .frame(width: scoopSize, height: scoopSize)
+                        .overlay(Text("1").font(.headline).foregroundColor(.white))
+                        .offset(y: -step * CGFloat(max(count - 1, 0)))
+                }
+                if let c = scoop2 {
+                    Circle()
+                        .fill(c)
+                        .frame(width: scoopSize, height: scoopSize)
+                        .overlay(Text("2").font(.headline).foregroundColor(.white))
+                        .offset(y: -step * CGFloat(max(count - 2, 0)))
+                }
+                if let c = scoop3 {
+                    Circle()
+                        .fill(c)
+                        .frame(width: scoopSize, height: scoopSize)
+                        .overlay(Text("3").font(.headline).foregroundColor(.white))
+                        .offset(y: -step * CGFloat(max(count - 3, 0)))
+                }
+                if let c = scoop4 {
+                    Circle()
+                        .fill(c)
+                        .frame(width: scoopSize, height: scoopSize)
+                        .overlay(Text("4").font(.headline).foregroundColor(.white))
+                        .offset(y: -step * CGFloat(max(count - 4, 0)))
+                }
+                if let c = scoop5 {
+                    Circle()
+                        .fill(c)
+                        .frame(width: scoopSize, height: scoopSize)
+                        .overlay(Text("5").font(.headline).foregroundColor(.white))
+                        .offset(y: -step * CGFloat(max(count - 5, 0)))
+                }
+            }
+            .frame(height: 320)
+
+            HStack(spacing: 24) {
+                Button("Add Scoop") { add() }
+                Button("Reset") { reset() }
+            }
+            .buttonStyle(.borderedProminent)
+        }
+        .padding()
+    }
+
+    func colorFor(_ i: Int) -> Color {
+        let colors: [Color] = [.pink, .yellow, .mint, .purple, .blue]
+        return colors[(i - 1) % colors.count]
+    }
+
+    func add() {
+        if scoop1 == nil { scoop1 = colorFor(1); count = 1 }
+        else if scoop2 == nil { scoop2 = colorFor(2); count = 2 }
+        else if scoop3 == nil { scoop3 = colorFor(3); count = 3 }
+        else if scoop4 == nil { scoop4 = colorFor(4); count = 4 }
+        else if scoop5 == nil { scoop5 = colorFor(5); count = 5 }
+        else { reset() }
+    }
+
+    func reset() {
+        count = 0
+        scoop1 = nil; scoop2 = nil; scoop3 = nil; scoop4 = nil; scoop5 = nil
+    }
+}</code></pre>
+          </details>
+        </article>
+
+        <article class="card">
+          <h3>SwiftUI Clock Game</h3>
+          <p>A mini game where you move a player before the timer runs out.</p>
+          <ul>
+            <li><strong>Hardest part:</strong> Updating the timer while also moving obstacles and checking collisions.</li>
+            <li><strong>Use of if, for, functions:</strong> If/else for levels and countdown, for loop for levels in console, functions for initial time and reset.</li>
+            <li><strong>Overflow:</strong> When the timer reaches 0, the level resets to the start.</li>
+          </ul>
+          <div class="links">
+            <a class="chip-link" href="https://www.veed.io/view/63f6933f-4363-4281-8204-b1a1f06838b4?source=editor&panel=share" target="_blank" rel="noopener">
+              Watch the gameplay
+            </a>
+          </div>
+          <img
+            src="https://canortn.github.io/images/Clock Game.png"
+            alt="Screenshot of my clock game interface" />
+          <details>
+            <summary>Show Swift code</summary>
+            <pre><code class="language-swift">import SwiftUI
+import Combine
+
+struct ContentView: View {
+    @State private var level = 1
+    @State private var time = 20
+    @State private var running = false
+    @State private var playerX: CGFloat = 0
+    @State private var obstacleY: CGFloat = -200
+    @State private var obstacleFromLeft = true
+    @State private var win = false
+    @State private var timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
+
+    func initialTimeForLevel(level: Int) -> Int {
+        switch level {
+        case 1: return 20
+        case 2: return 18
+        case 3: return 16
+        case 4: return 14
+        default: return 8
+        }
+    }
+
+    func nextLevel() {
+        level += 1
+        time = initialTimeForLevel(level: level)
+        playerX = 0
+        obstacleY = -200
+        obstacleFromLeft.toggle()
+        win = false
+    }
+
+    func resetLevel() {
+        time = initialTimeForLevel(level: level)
+        playerX = 0
+        obstacleY = -200
+        obstacleFromLeft.toggle()
+        win = false
+    }
+
+    var body: some View {
+        VStack(spacing: 16) {
+            Text("Level \(level)")
+                .font(.title)
+            Text("Time \(time)")
+                .font(.title2)
+
+            ZStack {
+                Rectangle().stroke(.gray)
+                Rectangle().fill(.gray.opacity(0.2))
+
+                let goalX: CGFloat = 140
+                Rectangle()
+                    .fill(.green.opacity(0.3))
+                    .frame(width: 40, height: 200)
+                    .offset(x: goalX)
+
+                Circle()
+                    .fill(.green)
+                    .frame(width: 30, height: 30)
+                    .offset(x: playerX, y: 0)
+
+                Rectangle()
+                    .fill(.red)
+                    .frame(width: 60, height: 20)
+                    .offset(x: obstacleFromLeft ? -100 : 100, y: obstacleY)
+            }
+            .frame(width: 320, height: 220)
+
+            HStack {
+                Button("Left") { if running { playerX -= 20 } }
+                Button("Right") { if running { playerX += 20 } }
+            }
+
+            HStack {
+                Button(running ? "Pause" : "Start") {
+                    if running {
+                        running = false
+                    } else {
+                        time = initialTimeForLevel(level: level)
+                        running = true
+                    }
+                }
+                Button("Reset") { resetLevel() }
+            }
+        }
+        .padding()
+        .onReceive(timer) { _ in
+            if running {
+                if time > 0 {
+                    time -= 1
+                    obstacleY += 40
+                    if obstacleY > 140 {
+                        obstacleY = -140
+                        obstacleFromLeft.toggle()
+                    }
+
+                    let playerFrame = CGRect(x: 160 + playerX - 15, y: 110 - 15, width: 30, height: 30)
+                    let obstX = obstacleFromLeft ? 160 - 100 - 30 : 160 + 100 - 30
+                    let obstacleFrame = CGRect(x: CGFloat(obstX), y: 110 + obstacleY - 10, width: 60, height: 20)
+
+                    if playerFrame.intersects(obstacleFrame) {
+                        running = false
+                        resetLevel()
+                    }
+
+                    if playerX >= 140 {
+                        win = true
+                        running = false
+                        nextLevel()
+                    }
+                } else {
+                    running = false
+                    resetLevel()
+                }
+            }
+        }
+    }
+}</code></pre>
+          </details>
+        </article>
+
+        <article class="card">
+          <h3>Data Compression</h3>
+          <img
+            src="https://canortn.github.io/images/Data_Compression.png"
+            alt="Screenshot of my data compression reflection and answers" />
+        </article>
+
+        <article class="card">
+          <h3>Extracting Information from Data</h3>
+          <img
+            src="https://canortn.github.io/images/Extracting Information from Data.png"
+            alt="Screenshot of my data extraction reflection and answers" />
+        </article>
+
+        
+    </section>
+
+    <section id="projects-2" class="page" data-title="Projects - 2 — Can Ortanç">
+      <h2>Projects - 2</h2>
+      <article class="card">
           <h3>SwiftUI Candy Shop Simulation</h3>
           <p>A small console-style simulation about candy stock, prices, and best sellers.</p>
           <details>
@@ -500,11 +1395,776 @@ CALL hotChocolateMachine</code></pre>
           </details>
         </article>
 
-        <!-- (Buraya senin diğer projects-2 kartların devam edebilir: array, world clock, ice cream, robot, initials, rps, binary search vs.) -->
-        <!-- Not: Swift kodlarındaki fazla kapanış süslüler (}) HTML için problem değil ama Swift derlemede problem olabilir.
-             İstersen onları da tek tek Swift dosyası gibi temizleyelim. -->
+        <article class="card">
+          <h3>SwiftUI My Array V1</h3>
+          <p>A simple array of my favorite games.</p>
+          <details>
+            <summary>Show Swift code</summary>
+            <pre><code class="language-swift">import SwiftUI
 
+struct ContentView: View {
+    let games = ["League Of Legends", "Fortnite", "FC 26", "Valorant"]
+
+    var body: some View {
+        VStack(spacing: 20) {
+            Text("My Array Map V1 – Gaming")
+                .font(.title2)
+                .padding(.bottom, 10)
+
+            ForEach(0..<games.count, id: \.self) { i in
+                RoundedRectangle(cornerRadius: 12)
+                    .stroke(Color.blue, lineWidth: 2)
+                    .frame(height: 60)
+                    .overlay(
+                        HStack {
+                            Text("Index \(i):")
+                                .font(.headline)
+                            Text(games[i])
+                                .font(.headline)
+                                .foregroundColor(.purple)
+                            Spacer()
+                        }
+                        .padding(.horizontal)
+                    )
+            }
+            Spacer()
+        }
+        .padding()
+    }
+}</code></pre>
+          </details>
+        </article>
+
+        <article class="card">
+          <h3>World Clock V1</h3>
+          <p>A simple list of cities for a world clock.</p>
+          <p><strong>Reflection:</strong> I used lists to organize information and realized that with more items, I’d rely more on loops but the logic would stay similar.</p>
+          <details>
+            <summary>Show Swift code</summary>
+            <pre><code class="language-swift">import SwiftUI
+
+struct ContentView: View {
+    let cities = [
+        "🇬🇧 London",
+        "🇹🇷 Istanbul",
+        "🇺🇸 New York",
+        "🇯🇵 Tokyo",
+        "🇫🇷 Paris",
+        "🇦🇺 Sydney"
+    ]
+
+    var body: some View {
+        NavigationView {
+            List(cities, id: \.self) { city in
+                Text(city)
+                    .font(.title2)
+                    .padding(.vertical, 4)
+            }
+            .navigationTitle("World Clock V1")
+        }
+    }
+}</code></pre>
+          </details>
+        </article>
+
+        <article class="card">
+          <h3>List Project — Ice Cream</h3>
+          <p>A SwiftUI list of ice cream flavors with colors and a cone.</p>
+          <div class="video-container">
+            <iframe 
+              src="https://www.veed.io/view/31b0751a-1a14-4b42-81c0-a61083b7bef9?source=Homepage&panel=share"
+              title="Ice cream list project"
+              frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen>
+            </iframe>
+          </div>
+          <div class="links">
+            <a class="chip-link" href="https://www.veed.io/view/31b0751a-1a14-4b42-81c0-a61083b7bef9?source=Homepage&panel=share" target="_blank" rel="noopener">
+              Open video in new tab
+            </a>
+          </div>
+          <details>
+            <summary>Show Swift code</summary>
+            <pre><code class="language-swift">import SwiftUI
+
+struct Triangle: Shape {
+    func path(in rect: CGRect) -> Path {
+        var path = Path()
+        path.move(to: CGPoint(x: rect.midX, y: rect.maxY))
+        path.addLine(to: CGPoint(x: rect.minX, y: rect.minY))
+        path.addLine(to: CGPoint(x: rect.maxX, y: rect.minY))
+        path.closeSubpath()
+        return path
+    }
+}
+
+struct ContentView: View {
+    let flavors = [
+        "Banana",
+        "Vanilla",
+        "Chocolate",
+        "Blueberry",
+        "Strawberry",
+        "Caramel"
+    ]
+
+    let flavorColors: [String: Color] = [
+        "Banana": .yellow,
+        "Vanilla": .white,
+        "Chocolate": .brown,
+        "Blueberry": .blue,
+        "Strawberry": .red,
+        "Caramel": Color.orange.opacity(0.8)
+    ]
+
+    var body: some View {
+        NavigationView {
+            ZStack(alignment: .bottom) {
+                List(flavors, id: \.self) { flavor in
+                    Text(flavor)
+                        .font(.title2)
+                        .padding(.vertical, 4)
+                        .listRowBackground(flavorColors[flavor])
+                }
+
+                Triangle()
+                    .fill(.brown)
+                    .frame(width: 300, height: 200)
+                    .offset(y: -470)
+            }
+            .navigationTitle("Flavor Of Ice Creams")
+        }
+    }
+}</code></pre>
+          </details>
+        </article>
+
+        <article class="card">
+          <h3>Swift Design Challenge v1 — Figma</h3>
+          <p><strong>Reflection:</strong> Nadin, who graduated from Hisar, inspired me because she proved that one simple idea can grow into a powerful project.</p>
+          <p>In the future, I want to create an app that helps students learn STEM topics in a more engaging way.</p>
+          <img
+            src="https://canortn.github.io/images/figma.png"
+            alt="Screenshot of my first Figma design" />
+          <div class="links">
+            <a class="chip-link" href="https://www.figma.com/design/odNDJr4HWsHsUHdgTANDLO/Untitled?node-id=0-1&t=DvXgolWNHrFoFc3g-1" target="_blank" rel="noopener">
+              Open Figma design
+            </a>
+          </div>
+        </article>
+
+        <article class="card">
+          <h3>SwiftUI Pixel Painter</h3>
+          <p>A 10×10 pixel grid where I can paint a cell by index.</p>
+          <img
+            src="https://canortn.github.io/images/Pixel_Painter.png"
+            alt="Screenshot of the pixel painter output" />
+          <details>
+            <summary>Show Swift code</summary>
+            <pre><code class="language-swift">import SwiftUI
+
+struct ContentView: View {
+    @State var cells = Array(0..<100)
+    @State var colors = Array(repeating: Color.gray, count: 100)
+    @State var inputText = ""
+
+    var body: some View {
+        VStack {
+            TextField("Enter cell 0-99", text: $inputText)
+                .keyboardType(.numberPad)
+                .textFieldStyle(.roundedBorder)
+                .padding()
+
+            Button("Paint") {
+                changeColor()
+            }
+            .padding()
+
+            drawGrid()
+                .padding()
+        }
+    }
+
+    func drawGrid() -> some View {
+        VStack(spacing: 2) {
+            ForEach(0..<10, id: \.self) { row in
+                HStack(spacing: 2) {
+                    ForEach(0..<10, id: \.self) { col in
+                        let index = row * 10 + col
+                        Rectangle()
+                            .fill(colors[index])
+                            .frame(width: 25, height: 25)
+                    }
+                }
+            }
+        }
+    }
+
+    func changeColor() {
+        guard let n = Int(inputText) else {
+            print("Invalid input")
+            return
+        }
+
+        if n >= 0 && n < cells.count {
+            colors[n] = .blue
+            print("Cell \(n) colored")
+        } else {
+            print("Invalid input")
+        }
+    }
+}</code></pre>
+          </details>
+        </article>
+
+        <article class="card">
+          <h3>Big Idea 3 Review — Code Projects</h3>
+          <p>A small collection of AP CSP practice Swift Playgrounds projects.</p>
+          <div class="links">
+            <a class="chip-link" href="https://github.com/canortn/canortn.github.io/tree/main/Number%20Guess%20Name.swiftpm" target="_blank" rel="noopener">
+              Number Guess Name
+            </a>
+            <a class="chip-link" href="https://github.com/canortn/canortn.github.io/tree/main/Grade%20Analyzer.swiftpm" target="_blank" rel="noopener">
+              Grade Analyzer
+            </a>
+            <a class="chip-link" href="https://github.com/canortn/canortn.github.io/tree/main/Lunch%20Money%20Calculator.swiftpm" target="_blank" rel="noopener">
+              Lunch Money Calculator
+            </a>
+          </div>
+        </article>
+
+        <article class="card">
+          <h3>Swift Design Challenge v2 — Figma</h3>
+          <p><strong>Reflection:</strong> The updated design has cleaner layout and new animations.</p>
+          <img
+            src="https://canortn.github.io/images/figma_v2.png"
+            alt="Screenshot of my second Figma design" />
+          <div class="video-container">
+            <iframe 
+              src="https://www.veed.io/view/251d4289-edab-4985-96a0-48dbb6037cc3?source=Homepage&panel=share"
+              title="Figma v2 walkthrough"
+              frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen>
+            </iframe>
+          </div>
+          <div class="links">
+            <a class="chip-link" href="https://www.veed.io/view/251d4289-edab-4985-96a0-48dbb6037cc3?source=Homepage&panel=share" target="_blank" rel="noopener">
+              Open video in new tab
+            </a>
+            <a class="chip-link" href="https://www.figma.com/design/odNDJr4HWsHsUHdgTANDLO/Untitled?node-id=0-1&p=f&t=K8o9ddDlP6DXSZWe-0" target="_blank" rel="noopener">
+              Open Figma design
+            </a>
+          </div>
+        </article>
+          <article class="card">
+          <h3>SwiftUI Robot Movement</h3>
+          <img
+            src="https://canortn.github.io/images/robot_simulation.png"
+            alt="Screenshot of my second Figma design" />
+          <details>
+            <summary>Show Swift code</summary>
+            <pre><code class="language-swift">import SwiftUI
+
+struct Position: Equatable {
+    var x: Int
+    var y: Int
+}
+
+struct ContentView: View {
+    let gridSize = 7
+    
+    @State var robotX = 0
+    @State var robotY = 0
+    @State var path: [Position] = []
+    
+    let obstacles: [Position] = [
+        Position(x: 3, y: 1),
+        Position(x: 2, y: 4)
+    ]
+    
+    @State var directions: [String] = []
+    @State var steps: [Int] = []
+    @State var message = "Tap Set Path then Run"
+    
+    var body: some View {
+        VStack(spacing: 16) {
+            Text("Robot Movement Simulation")
+                .font(.title2)
+            
+            gridView
+            
+            Text(message)
+                .font(.callout)
+            
+            HStack(spacing: 20) {
+                Button("Set Path") {
+                    setupSimplePath(repeatCount: 3)
+                    message = "Path ready. Tap Run."
+                }
+                .padding()
+                .background(Color.gray.opacity(0.2))
+                .cornerRadius(12)
+                
+                Button("Run") {
+                    reset(startX: 0, startY: 0)
+                    runSimulation()
+                    message = "Finished. Robot at (\(robotX), \(robotY))"
+                }
+                .padding()
+                .background(Color.blue.opacity(0.2))
+                .cornerRadius(12)
+            }
+        }
+        .padding()
+    }
+    
+    var gridView: some View {
+        VStack(spacing: 2) {
+            ForEach(0..<gridSize, id: \.self) { y in
+                HStack(spacing: 2) {
+                    ForEach(0..<gridSize, id: \.self) { x in
+                        Rectangle()
+                            .fill(colorForCell(x: x, y: y))
+                            .frame(width: 30, height: 30)
+                            .overlay(
+                                Rectangle().stroke(Color.black, lineWidth: 0.5)
+                            )
+                    }
+                }
+            }
+        }
+    }
+    
+    func reset(startX: Int, startY: Int) {
+        robotX = startX
+        robotY = startY
+        path = [Position(x: startX, y: startY)]
+    }
+    
+    func setupSimplePath(repeatCount: Int) {
+        directions = []
+        steps = []
+        
+        for _ in 0..<repeatCount {
+            directions.append("right")
+            steps.append(2)
+            
+            directions.append("down")
+            steps.append(1)
+            
+            directions.append("left")
+            steps.append(1)
+            
+            directions.append("down")
+            steps.append(1)
+        }
+    }
+    
+    func runSimulation() {
+        if directions.count == steps.count {
+            for i in 0..<directions.count {
+                let dir = directions[i]
+                let stepCount = steps[i]
+                move(direction: dir, steps: stepCount)
+            }
+        }
+    }
+    
+    func move(direction: String, steps: Int) {
+        if direction == "up" {
+            moveUp(steps: steps)
+        } else if direction == "down" {
+            moveDown(steps: steps)
+        } else if direction == "left" {
+            moveLeft(steps: steps)
+        } else if direction == "right" {
+            moveRight(steps: steps)
+        }
+    }
+    
+    func moveUp(steps: Int) {
+        for _ in 0..<steps {
+            let newY = robotY - 1
+            if newY >= 0 {
+                if !isObstacle(x: robotX, y: newY) {
+                    robotY = newY
+                    addCurrentPositionToPath()
+                } else {
+                    break
+                }
+            } else {
+                break
+            }
+        }
+    }
+    
+    func moveDown(steps: Int) {
+        for _ in 0..<steps {
+            let newY = robotY + 1
+            if newY < gridSize {
+                if !isObstacle(x: robotX, y: newY) {
+                    robotY = newY
+                    addCurrentPositionToPath()
+                } else {
+                    break
+                }
+            } else {
+                break
+            }
+        }
+    }
+    
+    func moveLeft(steps: Int) {
+        for _ in 0..<steps {
+            let newX = robotX - 1
+            if newX >= 0 {
+                if !isObstacle(x: newX, y: robotY) {
+                    robotX = newX
+                    addCurrentPositionToPath()
+                } else {
+                    break
+                }
+            } else {
+                break
+            }
+        }
+    }
+    
+    func moveRight(steps: Int) {
+        for _ in 0..<steps {
+            let newX = robotX + 1
+            if newX < gridSize {
+                if !isObstacle(x: newX, y: robotY) {
+                    robotX = newX
+                    addCurrentPositionToPath()
+                } else {
+                    break
+                }
+            } else {
+                break
+            }
+        }
+    }
+    
+    func addCurrentPositionToPath() {
+        let pos = Position(x: robotX, y: robotY)
+        path.append(pos)
+    }
+    
+    func isObstacle(x: Int, y: Int) -> Bool {
+        for obstacle in obstacles {
+            if obstacle.x == x && obstacle.y == y {
+                return true
+            }
+        }
+        return false
+    }
+    
+    func colorForCell(x: Int, y: Int) -> Color {
+        if robotX == x && robotY == y {
+            return .blue
+        } else if isObstacle(x: x, y: y) {
+            return .red
+        } else {
+            var visited = false
+            for p in path {
+                if p.x == x && p.y == y {
+                    visited = true
+                }
+            }
+            if visited {
+                return .gray
+            } else {
+                return .white
+            }
+        }
+    }
+}
+
+</code></pre>
+          </details>
+        </article>
       </div>
+
+        <article class="card">
+          <h3>SwiftUI My Name’s Initials</h3>
+          <p>My initials (C and O) drawn with a 10×10 dot grid.</p>
+          <details>
+            <summary>Show Swift code</summary>
+            <pre><code class="language-swift">import SwiftUI
+
+struct ContentView: View {
+    let gridSize = 10
+    let dotSize: CGFloat = 18
+    let gap: CGFloat = 8
+    let letterSpacing: CGFloat = 48
+    let cColor: Color = .yellow
+    let oColor: Color = .blue
+
+    var body: some View {
+        ZStack {
+            Color.black.ignoresSafeArea()
+            VStack(spacing: 24) {
+                Text("My Initials with Code")
+                    .font(.title2).bold()
+                    .foregroundColor(.white)
+                HStack(spacing: letterSpacing) {
+                    gridView(for: "C")
+                    gridView(for: "O")
+                }
+                .padding()
+            }
+        }
+    }
+
+    @ViewBuilder
+    func gridView(for letter: Character) -> some View {
+        VStack(spacing: gap) {
+            ForEach(0..<gridSize, id: \.self) { row in
+                HStack(spacing: gap) {
+                    ForEach(0..<gridSize, id: \.self) { col in
+                        if shouldDraw(letter: letter, row: row, col: col) {
+                            Circle()
+                                .fill(letter == "C" ? cColor : oColor)
+                                .frame(width: dotSize, height: dotSize)
+                        } else {
+                            Color.clear
+                                .frame(width: dotSize, height: dotSize)
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    func shouldDraw(letter: Character, row: Int, col: Int) -> Bool {
+        switch letter {
+        case "C":
+            let topOrBottom = (row == 0 || row == gridSize - 1) && (1...gridSize-2).contains(col)
+            let leftSide = (col == 0) && (1...gridSize-2).contains(row)
+            return topOrBottom || leftSide
+        case "O":
+            let topOrBottom = (row == 0 || row == gridSize - 1) && (1...gridSize-2).contains(col)
+            let sides = (col == 0 || col == gridSize - 1) && (1...gridSize-2).contains(row)
+            return topOrBottom || sides
+        default:
+            return false
+        }
+    }
+}</code></pre>
+          </details>
+        </article>
+      </div>
+
+        <article class="card">
+          <h3>SwiftUI Rock Paper Scissors</h3>
+            <p>Swift rock-paper-scissors game with competing against ai.</p>
+          <details>
+            <summary>Show Swift code</summary>
+            <pre><code class="language-swift">import SwiftUI
+
+struct ContentView: View {
+    
+    let game = GameLogic()
+    @State var userChoice = "—"
+    @State var computerChoice = "—"
+    @State var resultText = "Seçimini yap"
+    @State var hasPlayed = false
+    @State var win = ""
+    @State var lose = ""
+    @State var tie = ""
+    
+    
+    var body: some View {
+        VStack(spacing: 24) {
+            Text("Taş Kağıt Makas")
+                .font(.title)
+                .bold()
+            
+            HStack(spacing: 24) {
+                VStack(spacing: 6) {
+                    Text("Sen")
+                        .font(.subheadline)
+                        .foregroundColor(.secondary)
+                    Text(userChoice)
+                        .font(.system(size: 52))
+                }
+                
+                VStack(spacing: 6) {
+                    Text("PC")
+                        .font(.subheadline)
+                        .foregroundColor(.secondary)
+                    Text(computerChoice)
+                        .font(.system(size: 52))
+                }
+            }
+            
+            Text(resultText)
+                .font(.headline)
+            
+            HStack(spacing: 14) {
+                ForEach(game.choices, id: \.self) { emoji in
+                    Button {
+                        play(user: emoji)
+                    } label: {
+                        Text(emoji)
+                            .font(.system(size: 44))
+                            .frame(width: 72, height: 60)
+                    }
+                    .buttonStyle(.bordered)
+                    .disabled(hasPlayed)
+                }
+            }
+            
+            if hasPlayed {
+                Button("Play Again") {
+                    playAgain()
+                }
+                .buttonStyle(.borderedProminent)
+                .padding(.top, 6)
+            }
+            
+            Spacer()
+        }
+        .padding()
+    }
+    
+    private func play(user: String) {
+        guard !hasPlayed else { return }
+        
+        userChoice = user
+        computerChoice = game.randomComputerChoice()
+        
+        let outcome = game.determineWinner(
+            userChoice: userChoice,
+            computerChoice: computerChoice
+        )
+        
+        resultText = outcome.text
+        hasPlayed = true
+    }
+    
+    private func playAgain() {
+        userChoice = "—"
+        computerChoice = "—"
+        resultText = "Seçimini yap"
+        hasPlayed = false
+    }
+}
+
+}</code></pre>
+          </details>
+
+          <details>
+            <summary>Show logic code</summary>
+            <pre><code class="language-pseudocode">import Foundation
+
+struct GameLogic {
+    let choices = ["✊", "✋", "✌️"]
+    
+    enum Outcome {
+        case win, lose, tie
+        
+        var text: String {
+            switch self {
+            case .win: return "Kazandın!"
+            case .lose: return "Kaybettin!"
+            case .tie: return "Berabere!"
+            }
+        }
+    }
+    
+    func randomComputerChoice() -> String {
+        choices.randomElement() ?? "✊"
+    }
+    
+    func determineWinner(userChoice: String, computerChoice: String) -> Outcome {
+        if userChoice == computerChoice { return .tie }
+        
+        if (userChoice == "✊" && computerChoice == "✌️") ||
+            (userChoice == "✋" && computerChoice == "✊") ||
+            (userChoice == "✌️" && computerChoice == "✋") {
+            return .win
+        } else {
+            return .lose
+        }
+    }
+}
+</code></pre>
+          </details>
+        </article>
+          <h3>Binary Search Protocol Swift Project</h3>
+          <p>A binary search protocol with both SwiftUI code and pseudocode.</p>
+          <details>
+            <summary>Show Swift code</summary>
+            <pre><code class="language-swift">import Foundation
+
+let database = [2, 5, 8, 12, 16, 23, 38, 56, 72, 91]
+let targetID = 23
+
+var low = 0
+var high = database.count - 1
+var steps = 0
+var foundIndex: Int? = nil
+
+print("> SYSTEM: Starting Binary Search Protocol...")
+print("> Target ID: \(targetID)")
+print("> ---------------------------------------------")
+
+while low <= high && foundIndex == nil {
+    let mid = (low + high) / 2
+    steps += 1
+   
+    print("> Step \(steps): Checking Index [\(mid)] -> Value: \(database[mid])")
+   
+    if database[mid] == targetID {
+        foundIndex = mid
+    } else if database[mid] < targetID {
+        low = mid + 1
+    } else {
+        high = mid - 1
+    }
+}
+
+print(">")
+
+if let idx = foundIndex {
+    print("> SUCCESS: User ID found at Index \(idx)")
+    print("> EFFICIENCY: Operation completed in \(steps) steps.")
+}
+}</code></pre>
+          </details>
+
+          <details>
+            <summary>Show pseudocode</summary>
+            <pre><code class="language-pseudocode">SET list ← [2, 5, 8, 12, 16, 23, 38, 56, 72, 91]
+SET target ← 23
+SET low ← 0
+SET high ← LENGTH(list) - 1
+SET steps ← 0
+SET found ← false
+
+OUTPUT "SYSTEM: Starting Binary Search Protocol..."
+OUTPUT "Target ID: 23"
+OUTPUT "---------------------------------------------"
+
+REPEAT UNTIL (low > high OR found = true)
+SET mid ← (low + high) / 2
+SET steps ← steps + 1
+OUTPUT "Step " + steps + ": Checking Index [" + mid + "] -> Value: " + list[mid]
+
+IF list[mid] = target
+OUTPUT "SUCCESS: User ID found at Index " + mid
+OUTPUT "EFFICIENCY: Operation completed in " + steps + " steps."
+SET found ← true
+ELSE IF list[mid] < target
+SET low ← mid + 1
+ELSE
+SET high ← mid - 1 </code></pre>
+          </details>
+        </article>
     </section>
 
     <section id="big-ideas" class="page" data-title="Big Ideas — Can Ortanç">
@@ -556,6 +2216,33 @@ CALL hotChocolateMachine</code></pre>
           <li><strong>2.4 Data Cleaning:</strong> Missing, repeated, or inconsistent values distort results, so cleaning is essential before analyzing anything.</li>
         </ul>
 
+        <div style="margin-top:12px;">
+          <h4 style="margin:0 0 6px;">Reflection — Compression &amp; Representation</h4>
+          <ul>
+            <li><strong>Key concept:</strong> File type and compression balance quality, storage, and speed.</li>
+            <li><strong>Real-world example:</strong> I use PNG for icons and JPEG for photos on my website.</li>
+            <li><strong>Reflection:</strong> Choosing the right format impacts clarity and performance. I want to experiment with adaptive compression in future projects.</li>
+          </ul>
+        </div>
+
+        <div style="margin-top:10px;">
+          <h4 style="margin:0 0 6px;">Reflection — Data Collection &amp; Bias</h4>
+          <ul>
+            <li><strong>Key concept:</strong> Valid conclusions depend on proper sampling and consent.</li>
+            <li><strong>Real-world example:</strong> A survey sent only to club members distorts feedback for a school app.</li>
+            <li><strong>Reflection:</strong> Representativeness is more important than just sample size. I plan to record sampling limits and include more diverse groups in future surveys.</li>
+          </ul>
+        </div>
+
+        <div style="margin-top:10px;">
+          <h4 style="margin:0 0 6px;">Reflection — Privacy &amp; Anonymization</h4>
+          <ul>
+            <li><strong>Key concept:</strong> Hashing, encryption, and k-anonymity reduce risk when sharing information.</li>
+            <li><strong>Real-world example:</strong> Hashing student IDs before analyzing usage data.</li>
+            <li><strong>Reflection:</strong> Balancing privacy and usefulness is hard, especially with small datasets. I plan to test different k values and think more about re-identification risks.</li>
+          </ul>
+        </div>
+
         <p class="muted"><strong>1.5-minute narration:</strong> see the embedded video in this section.</p>
 
         <div class="video-container" id="bigidea2-video">
@@ -572,35 +2259,6 @@ CALL hotChocolateMachine</code></pre>
             </a>
           </div>
         </div>
-      </article>
-
-      <!-- ✅ TAŞINAN + DETAILS'TEN ÇIKARILAN KISIM: artık normal card -->
-      <h2>Unit 3 — Algorithms &amp; Programming</h2>
-
-      <article class="card">
-        <h3>AP CSP Unit 3 – Video Explanations with Swift Examples</h3>
-        <p class="muted">
-          College Board videoları için aldığım genel notlar + Swift örnekleri neden kullandığımı açıklayan kısa yazı.
-        </p>
-
-        <div class="links">
-          <a class="chip-link"
-             href="https://docs.google.com/document/d/1_5fEu7yiXc9bmC-AVa68ekGQEBrnIkENP16bfQo34CM/edit?usp=sharing"
-             target="_blank" rel="noopener">
-            General Notes
-          </a>
-
-          <a class="chip-link"
-             href="https://docs.google.com/document/d/15LfM9vGkv_XsGrUn818s4FWB0MlQukT4TyovgRoXodM/edit?usp=sharing"
-             target="_blank" rel="noopener">
-            Why We Use Swift Examples?
-          </a>
-        </div>
-
-        <p style="margin-top:10px;">
-          <strong>What I did:</strong> I watched the Unit 3 videos, took notes, and wrote small Swift examples to prove I understand the ideas.
-          Using Swift helps because it turns “theory” into working code, and it makes debugging + logic clearer.
-        </p>
       </article>
     </section>
 
@@ -664,7 +2322,6 @@ CALL hotChocolateMachine</code></pre>
             Answer Key
           </a>
         </div>
-
         <div class="video-container">
           <iframe 
             src="https://www.veed.io/view/9bd8a187-3168-4d0d-9271-3f713d99501e?source=Homepage&panel=share"
@@ -674,7 +2331,6 @@ CALL hotChocolateMachine</code></pre>
             allowfullscreen>
           </iframe>
         </div>
-
         <div class="links">
           <a class="chip-link" href="https://www.veed.io/view/9bd8a187-3168-4d0d-9271-3f713d99501e?source=Homepage&panel=share" target="_blank" rel="noopener">
             Open video in new tab
@@ -737,9 +2393,17 @@ struct ContentView: View {
 }</code></pre>
         </details>
       </article>
-
-      <!-- ✅ Buradan Unit 3 details kaldırıldı (Big Ideas'a taşındı) -->
-
+  
+      <article>
+          <p>AP CSP Unit 3 – Video Explanations with Swift Examples</p>
+          <p>My general notes</p><a class="chip-link" href="https://docs.google.com/document/d/1_5fEu7yiXc9bmC-AVa68ekGQEBrnIkENP16bfQo34CM/edit?usp=sharing" target="_blank" rel="noopener">
+           General Notes
+          </a>
+          <p>The Video</p>
+          <p>Why We Use Swift Examples ?</p><a class="chip-link" href="https://docs.google.com/document/d/15LfM9vGkv_XsGrUn818s4FWB0MlQukT4TyovgRoXodM/edit?usp=sharing" target="_blank" rel="noopener">
+           Explanation
+          </a>
+      </article>
     </section>
   </main>
 
