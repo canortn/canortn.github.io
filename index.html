@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
- 
+ 
   <style>
     :root {
       --bg: #09090f;
@@ -35,10 +35,10 @@
       --shadow: 0 2px 24px rgba(0,0,0,0.55);
       --shadow-blue: 0 0 50px rgba(59,130,246,0.10);
     }
- 
+ 
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
- 
+ 
     body {
       font-family: var(--font);
       background: var(--bg);
@@ -47,7 +47,7 @@
       min-height: 100vh;
       overflow-x: hidden;
     }
- 
+ 
     /* dot grid */
     body::before {
       content: '';
@@ -58,7 +58,7 @@
       pointer-events: none;
       z-index: 0;
     }
- 
+ 
     /* ambient glow */
     body::after {
       content: '';
@@ -69,7 +69,7 @@
       pointer-events: none;
       z-index: 0;
     }
- 
+ 
     /* ── HEADER ─────────────────────────── */
     .header-wrap {
       position: sticky;
@@ -80,7 +80,7 @@
       -webkit-backdrop-filter: blur(24px);
       border-bottom: 1px solid var(--border);
     }
- 
+ 
     .header-inner {
       position: relative;
       z-index: 1;
@@ -92,7 +92,7 @@
       justify-content: space-between;
       gap: 16px;
     }
- 
+ 
     .logo {
       font-size: 18px;
       font-weight: 800;
@@ -103,9 +103,9 @@
       -webkit-text-fill-color: transparent;
       background-clip: text;
     }
- 
+ 
     nav { display: flex; align-items: center; gap: 2px; flex-wrap: wrap; }
- 
+ 
     nav a {
       text-decoration: none;
       color: var(--text-2);
@@ -116,19 +116,19 @@
       border: 1px solid transparent;
       transition: all 0.18s ease;
     }
- 
+ 
     nav a:hover {
       color: var(--text);
       background: rgba(255,255,255,0.055);
       border-color: var(--border);
     }
- 
+ 
     nav a[aria-current="page"] {
       color: var(--blue-light);
       background: rgba(59,130,246,0.12);
       border-color: var(--border-blue);
     }
- 
+ 
     /* ── MAIN ────────────────────────────── */
     main {
       position: relative;
@@ -137,17 +137,17 @@
       margin: 0 auto;
       padding: 44px 24px 100px;
     }
- 
+ 
     .page {
       display: none;
       animation: fadeUp 0.28s ease-out;
     }
- 
+ 
     @keyframes fadeUp {
       from { opacity: 0; transform: translateY(8px); }
       to   { opacity: 1; transform: translateY(0);   }
     }
- 
+ 
     /* ── TYPOGRAPHY ──────────────────────── */
     .section-title {
       font-size: 30px;
@@ -159,14 +159,14 @@
       background-clip: text;
       margin-bottom: 4px;
     }
- 
+ 
     .section-sub {
       color: var(--text-3);
       font-size: 14px;
       margin-bottom: 30px;
       font-weight: 500;
     }
- 
+ 
     h3 {
       font-size: 16.5px;
       font-weight: 700;
@@ -174,30 +174,30 @@
       letter-spacing: -0.2px;
       margin-bottom: 7px;
     }
- 
+ 
     h4 {
       font-size: 14.5px;
       font-weight: 700;
       color: var(--text);
       margin-bottom: 6px;
     }
- 
+ 
     p {
       font-size: 14px;
       color: var(--text-2);
       line-height: 1.72;
       margin-bottom: 8px;
     }
- 
+ 
     p:last-child { margin-bottom: 0; }
- 
+ 
     /* ── GRID ────────────────────────────── */
     .grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
       gap: 14px;
     }
- 
+ 
     /* ── CARDS ───────────────────────────── */
     .card {
       background: var(--surface);
@@ -207,13 +207,13 @@
       box-shadow: var(--shadow);
       transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
     }
- 
+ 
     .card:hover {
       transform: translateY(-3px);
       box-shadow: var(--shadow-blue), var(--shadow);
       border-color: var(--border-blue);
     }
- 
+ 
     /* featured: full-width */
     .card-featured {
       grid-column: 1 / -1;
@@ -222,7 +222,7 @@
       position: relative;
       overflow: hidden;
     }
- 
+ 
     .card-featured::before {
       content: '';
       position: absolute;
@@ -230,10 +230,10 @@
       height: 2px;
       background: linear-gradient(90deg, var(--blue), var(--teal));
     }
- 
+ 
     /* ── TAGS ────────────────────────────── */
     .tags { display: flex; flex-wrap: wrap; gap: 6px; margin: 10px 0 4px; }
- 
+ 
     .tag {
       font-size: 11.5px;
       font-weight: 600;
@@ -242,16 +242,16 @@
       border: 1px solid;
       font-family: var(--mono);
     }
- 
+ 
     .tag-blue  { color: var(--blue-light); border-color: rgba(96,165,250,0.3);  background: rgba(59,130,246,0.09); }
     .tag-teal  { color: var(--teal-light); border-color: rgba(45,212,191,0.3);  background: rgba(45,212,191,0.09); }
     .tag-green { color: var(--green);      border-color: rgba(74,222,128,0.3);  background: rgba(74,222,128,0.09); }
     .tag-amber { color: var(--amber);      border-color: rgba(251,191,36,0.3);  background: rgba(251,191,36,0.09); }
     .tag-red   { color: var(--red);        border-color: rgba(248,113,113,0.3); background: rgba(248,113,113,0.09); }
- 
+ 
     /* ── LINKS / CHIPS ───────────────────── */
     .links { display: flex; gap: 7px; flex-wrap: wrap; margin-top: 13px; }
- 
+ 
     .chip-link {
       border: 1px solid var(--border);
       padding: 6px 13px;
@@ -263,23 +263,23 @@
       background: var(--surface-2);
       transition: all 0.15s ease;
     }
- 
+ 
     .chip-link:hover {
       border-color: var(--border-blue);
       color: var(--blue-light);
       background: rgba(59,130,246,0.07);
     }
- 
+ 
     .chip-link-primary {
       background: rgba(59,130,246,0.13);
       border-color: var(--border-blue);
       color: var(--blue-light);
     }
- 
+ 
     .chip-link-primary:hover {
       background: rgba(59,130,246,0.22);
     }
- 
+ 
     /* ── CODE ────────────────────────────── */
     pre {
       overflow: auto;
@@ -294,11 +294,11 @@
       color: #c8c8e0;
       tab-size: 2;
     }
- 
+ 
     code { font-family: var(--mono); }
- 
+ 
     details { margin-top: 8px; }
- 
+ 
     details summary {
       cursor: pointer;
       color: var(--blue-light);
@@ -308,10 +308,10 @@
       padding: 6px 0;
       transition: color 0.15s;
     }
- 
+ 
     details summary:hover { color: #93c5fd; }
     details[open] summary { margin-bottom: 6px; }
- 
+ 
     /* ── IMAGES ─────────────────────────── */
     img {
       max-width: 100%;
@@ -320,23 +320,23 @@
       margin-top: 12px;
       display: block;
     }
- 
+ 
     .screenshots {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
       gap: 10px;
       margin-top: 14px;
     }
- 
+ 
     .screenshots img {
       margin-top: 0;
       border-radius: 16px;
       border-color: rgba(59,130,246,0.18);
     }
- 
+ 
     /* ── VIDEO ───────────────────────────── */
     .video-container { max-width: 700px; width: 100%; margin: 12px 0; }
- 
+ 
     .video-container video,
     .video-container iframe {
       width: 100%;
@@ -345,14 +345,14 @@
       border-radius: var(--r);
       aspect-ratio: 16/9;
     }
- 
+ 
     /* ── LISTS ───────────────────────────── */
     ul { padding-left: 18px; margin-top: 8px; }
     li { margin-bottom: 5px; font-size: 14px; color: var(--text-2); }
     li strong { color: var(--text); }
- 
+ 
     .feature-list { list-style: none; padding: 0; margin: 12px 0 0; }
- 
+ 
     .feature-list li {
       display: flex;
       align-items: flex-start;
@@ -362,11 +362,11 @@
       font-size: 13.5px;
       color: var(--text-2);
     }
- 
+ 
     .feature-list li:last-child { border-bottom: none; }
- 
+ 
     .fi { font-size: 15px; flex-shrink: 0; margin-top: 1px; }
- 
+ 
     /* ── FEATURED LAYOUT ─────────────────── */
     .feat-header {
       display: flex;
@@ -374,7 +374,7 @@
       gap: 16px;
       margin-bottom: 16px;
     }
- 
+ 
     .app-icon {
       width: 58px; height: 58px;
       border-radius: 14px;
@@ -384,17 +384,17 @@
       flex-shrink: 0;
       box-shadow: 0 8px 24px rgba(29,78,216,0.45);
     }
- 
+ 
     .feat-title h3 { font-size: 22px; margin-bottom: 4px; }
     .feat-title .sub { font-size: 12.5px; color: var(--text-3); font-weight: 500; }
- 
+ 
     .feat-body {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 28px;
       margin-top: 12px;
     }
- 
+ 
     .label {
       font-size: 11px;
       font-weight: 700;
@@ -403,10 +403,10 @@
       color: var(--text-3);
       margin-bottom: 8px;
     }
- 
+ 
     /* ── HOME ────────────────────────────── */
     .home-hero { padding: 12px 0 40px; }
- 
+ 
     .home-hero h1 {
       font-size: 52px;
       font-weight: 800;
@@ -418,11 +418,11 @@
       -webkit-text-fill-color: transparent;
       background-clip: text;
     }
- 
+ 
     .home-hero .intro { font-size: 16px; color: var(--text-2); max-width: 520px; line-height: 1.75; }
- 
+ 
     .home-chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 26px; }
- 
+ 
     .home-chip {
       font-size: 13px;
       font-weight: 600;
@@ -432,17 +432,17 @@
       color: var(--text-2);
       background: var(--surface);
     }
- 
+ 
     /* ── DIVIDER ─────────────────────────── */
     .divider {
       height: 1px;
       background: linear-gradient(90deg, transparent, var(--border), transparent);
       margin: 30px 0;
     }
- 
+ 
     /* ── BIG IDEAS ───────────────────────── */
     .bi-section { margin-bottom: 36px; }
- 
+ 
     /* ── FOOTER ──────────────────────────── */
     .footer-wrap {
       position: relative;
@@ -451,7 +451,7 @@
       margin: 0 auto;
       padding: 0 24px 28px;
     }
- 
+ 
     footer {
       border-top: 1px solid var(--border);
       padding-top: 20px;
@@ -463,11 +463,11 @@
       font-size: 13px;
       color: var(--text-3);
     }
- 
+ 
     footer .links { margin-top: 0; }
     footer a { text-decoration: none; color: var(--text-2); font-weight: 600; transition: color 0.15s; }
     footer a:hover { color: var(--blue-light); }
- 
+ 
     /* ── RESPONSIVE ──────────────────────── */
     @media (max-width: 680px) {
       .home-hero h1 { font-size: 36px; }
@@ -478,9 +478,9 @@
     }
   </style>
 </head>
- 
+ 
 <body>
- 
+ 
   <div class="header-wrap">
     <div class="header-inner">
       <a href="#home" class="logo">Can Ortanç</a>
@@ -494,9 +494,9 @@
       </nav>
     </div>
   </div>
- 
+ 
   <main>
- 
+ 
     <!-- ═══════════════════════════════════ HOME -->
     <section id="home" class="page" data-title="Home — Can Ortanç">
       <div class="home-hero">
@@ -515,14 +515,14 @@
         </div>
       </div>
     </section>
- 
+ 
     <!-- ═══════════════════════════════════ PROJECTS -->
     <section id="projects" class="page" data-title="Projects — Can Ortanç">
       <h2 class="section-title">Projects</h2>
       <p class="section-sub">SwiftUI apps and coding experiments</p>
- 
+ 
       <div class="grid">
- 
+ 
         <article class="card">
           <h3>Scratch Tic-Tac-Toe</h3>
           <p>The Tic-Tac-Toe game that I built in Scratch.</p>
@@ -531,7 +531,7 @@
             <a class="chip-link" href="https://scratch.mit.edu/projects/1212433117/" target="_blank" rel="noopener">Play on Scratch</a>
           </div>
         </article>
- 
+ 
         <article class="card">
           <h3>SwiftUI Tic-Tac-Toe</h3>
           <p>Two-player Tic-Tac-Toe with win detection, draw logic, and a restart button.</p>
@@ -544,7 +544,7 @@
           <details>
             <summary>▸ Show Swift code</summary>
             <pre><code>import SwiftUI
- 
+ 
 struct ContentView: View {
     @State var player = "X"
     @State var message1 = ""; @State var message2 = ""; @State var message3 = ""
@@ -552,7 +552,7 @@ struct ContentView: View {
     @State var message7 = ""; @State var message8 = ""; @State var message9 = ""
     @State var gameOver = false
     @State var statusText = ""
- 
+ 
     var body: some View {
         VStack(spacing: 20) {
             Text(statusText.isEmpty ? "Sıra: \(player)" : statusText)
@@ -569,7 +569,7 @@ struct ContentView: View {
             Button("Restart") { resetBoard() }.padding(.top, 8)
         }
     }
- 
+ 
     func tileView(text: Binding&lt;String&gt;) -> some View {
         ZStack {
             Rectangle().fill(Color.blue).frame(width: 120, height: 120)
@@ -583,7 +583,7 @@ struct ContentView: View {
             Text(text.wrappedValue).font(.title2).foregroundColor(.white)
         }
     }
- 
+ 
     func checkWinner() {
         if message1 != "" && message1 == message2 && message2 == message3 { statusText = "\(message1) kazandı!"; gameOver = true }
         else if message4 != "" && message4 == message5 && message5 == message6 { statusText = "\(message4) kazandı!"; gameOver = true }
@@ -595,7 +595,7 @@ struct ContentView: View {
         else if message3 != "" && message3 == message5 && message5 == message7 { statusText = "\(message3) kazandı!"; gameOver = true }
         else if [message1,message2,message3,message4,message5,message6,message7,message8,message9].allSatisfy({ !$0.isEmpty }) { statusText = "Berabere!"; gameOver = true }
     }
- 
+ 
     func resetBoard() {
         message1=""; message2=""; message3=""; message4=""; message5=""; message6=""
         message7=""; message8=""; message9=""; player="X"; statusText=""; gameOver=false
@@ -603,7 +603,7 @@ struct ContentView: View {
 }</code></pre>
           </details>
         </article>
- 
+ 
         <article class="card">
           <h3>SwiftUI Calculator</h3>
           <p>A simple calculator with +, -, ×, ÷ operations built in Swift.</p>
@@ -611,10 +611,10 @@ struct ContentView: View {
           <details>
             <summary>▸ Show Swift code</summary>
             <pre><code>import SwiftUI
- 
+ 
 struct ContentView: View {
     @State var n1 = ""; @State var n2 = ""; @State var result = 0
- 
+ 
     var body: some View {
         VStack(spacing: 12) {
             Text("Simple Calculator").font(.title2)
@@ -634,7 +634,7 @@ struct ContentView: View {
 }</code></pre>
           </details>
         </article>
- 
+ 
         <article class="card">
           <h3>SwiftUI Portrait</h3>
           <p>A simple portrait drawn entirely with SwiftUI shapes.</p>
@@ -642,7 +642,7 @@ struct ContentView: View {
           <details>
             <summary>▸ Show Swift code</summary>
             <pre><code>import SwiftUI
- 
+ 
 struct ContentView: View {
     var body: some View {
         ZStack {
@@ -658,7 +658,7 @@ struct ContentView: View {
 }</code></pre>
           </details>
         </article>
- 
+ 
         <article class="card">
           <h3>SwiftUI Clock v1</h3>
           <p>First version of my interactive SwiftUI clock — tap to advance time.</p>
@@ -666,18 +666,18 @@ struct ContentView: View {
           <details>
             <summary>▸ Show Swift code</summary>
             <pre><code>import SwiftUI
- 
+ 
 struct ContentView: View {
     @State var hour = 13
     @State var minuteSeg = 0
- 
+ 
     var hourAngle: Double {
         let h = hour % 12
         let base = Double(h) * 30
         let step = Double(minuteSeg) * 7.5
         return (h == 0 && minuteSeg == 0) ? 0 : base + step
     }
- 
+ 
     var body: some View {
         VStack(spacing: 16) {
             Text("Time: \(hour)")
@@ -701,7 +701,7 @@ struct ContentView: View {
 }</code></pre>
           </details>
         </article>
- 
+ 
         <article class="card">
           <h3>SwiftUI Clock v2</h3>
           <p>Added +/- hour buttons and a "Next Minute" button alongside tap gesture.</p>
@@ -714,16 +714,16 @@ struct ContentView: View {
           <details>
             <summary>▸ Show Swift code</summary>
             <pre><code>import SwiftUI
- 
+ 
 struct ContentView: View {
     @State var hour = 0
     @State var minuteSeg = 0
- 
+ 
     var hourAngle: Double {
         let h = hour % 12
         return (h == 0 && minuteSeg == 0) ? 0 : Double(h)*30 + Double(minuteSeg)*7.5
     }
- 
+ 
     var body: some View {
         ZStack {
             (hour &lt; 12 ? Color.white : Color.gray).ignoresSafeArea()
@@ -741,7 +741,7 @@ struct ContentView: View {
 }</code></pre>
           </details>
         </article>
- 
+ 
         <article class="card">
           <h3>SwiftUI Clock v3–5 (Mickey Clock)</h3>
           <p>Mickey Mouse–themed clock with number ring, ears, eyes, and mode toggle.</p>
@@ -754,15 +754,15 @@ struct ContentView: View {
           <details>
             <summary>▸ Show Swift code</summary>
             <pre><code>import SwiftUI
- 
+ 
 struct ContentView: View {
     @State var hour = 0; @State var minuteSeg = 0
- 
+ 
     var hourAngle: Double {
         let h = hour % 12
         return (h==0 && minuteSeg==0) ? 0 : Double(h)*30 + Double(minuteSeg)*7.5
     }
- 
+ 
     var body: some View {
         ZStack {
             (hour &lt; 12 ? Color.white : Color.gray).ignoresSafeArea()
@@ -789,7 +789,7 @@ struct ContentView: View {
 }</code></pre>
           </details>
         </article>
- 
+ 
         <article class="card">
           <h3>SwiftUI 4-Bit Binary Counter</h3>
           <p>Count 0–15, display in decimal and binary with green/gray LED tiles.</p>
@@ -798,21 +798,21 @@ struct ContentView: View {
           <details>
             <summary>▸ Show Swift code</summary>
             <pre><code>import SwiftUI
- 
+ 
 struct ContentView: View {
     @State var id = 0
     let maxID = 15
- 
+ 
     private var bits: [String] {
         Array(decimalToBinary(id)).map { String($0) }
     }
- 
+ 
     func decimalToBinary(_ number: Int) -> String {
         let powers = [8,4,2,1]; var n = number%16; var s = ""
         for p in powers { if n >= p { s += "1"; n -= p } else { s += "0" } }
         return s
     }
- 
+ 
     var body: some View {
         ZStack {
             Color.black.ignoresSafeArea()
@@ -840,7 +840,7 @@ struct ContentView: View {
 }</code></pre>
           </details>
         </article>
- 
+ 
         <article class="card">
           <h3>SwiftUI Ice Cream Game</h3>
           <p>Interactive ice cream cone with up to 5 colorful scoops.</p>
@@ -848,7 +848,7 @@ struct ContentView: View {
           <details>
             <summary>▸ Show Swift code</summary>
             <pre><code>import SwiftUI
- 
+ 
 struct Triangle: Shape {
     func path(in rect: CGRect) -> Path {
         var path = Path()
@@ -858,7 +858,7 @@ struct Triangle: Shape {
         path.closeSubpath(); return path
     }
 }
- 
+ 
 struct ContentView: View {
     @State private var scoop1: Color? = nil
     @State private var scoop2: Color? = nil
@@ -866,11 +866,11 @@ struct ContentView: View {
     @State private var scoop4: Color? = nil
     @State private var scoop5: Color? = nil
     @State private var count = 0
- 
+ 
     func colorFor(_ i: Int) -> Color {
         [Color.pink,.yellow,.mint,.purple,.blue][(i-1) % 5]
     }
- 
+ 
     func add() {
         if scoop1==nil { scoop1=colorFor(1); count=1 }
         else if scoop2==nil { scoop2=colorFor(2); count=2 }
@@ -879,14 +879,14 @@ struct ContentView: View {
         else if scoop5==nil { scoop5=colorFor(5); count=5 }
         else { reset() }
     }
- 
+ 
     func reset() { count=0; scoop1=nil; scoop2=nil; scoop3=nil; scoop4=nil; scoop5=nil }
- 
+ 
     // body: ZStack with Triangle (cone) + Circle scoops stacked by offset
 }</code></pre>
           </details>
         </article>
- 
+ 
         <article class="card">
           <h3>SwiftUI Clock Game</h3>
           <p>Move a player left/right before the timer hits zero while avoiding obstacles.</p>
@@ -900,29 +900,29 @@ struct ContentView: View {
           </div>
           <img src="https://canortn.github.io/images/Clock Game.png" alt="Clock game interface" />
         </article>
- 
+ 
         <article class="card">
           <h3>Data Compression</h3>
           <div class="tags"><span class="tag tag-teal">AP CSP</span></div>
           <img src="https://canortn.github.io/images/Data_Compression.png" alt="Data compression reflection" />
         </article>
- 
+ 
         <article class="card">
           <h3>Extracting Information from Data</h3>
           <div class="tags"><span class="tag tag-teal">AP CSP</span></div>
           <img src="https://canortn.github.io/images/Extracting Information from Data.png" alt="Data extraction reflection" />
         </article>
- 
+ 
       </div><!-- /grid -->
     </section>
- 
+ 
     <!-- ═══════════════════════════════════ PROJECTS 2 -->
     <section id="projects-2" class="page" data-title="Projects 2 — Can Ortanç">
       <h2 class="section-title">Projects 2</h2>
       <p class="section-sub">More Swift apps, simulations & design challenges</p>
- 
+ 
       <div class="grid">
- 
+ 
         <article class="card">
           <h3>SwiftUI Candy Shop Simulation</h3>
           <p>Console-style sim tracking candy stock, prices, and best sellers over 60 minutes.</p>
@@ -930,10 +930,10 @@ struct ContentView: View {
           <details>
             <summary>▸ Show Swift code</summary>
             <pre><code>import SwiftUI
- 
+ 
 struct ContentView: View {
     @State private var report = ""
- 
+ 
     var body: some View {
         ScrollView {
             Text(report.isEmpty ? "Running..." : report)
@@ -941,12 +941,12 @@ struct ContentView: View {
         }
         .onAppear { report = simulate() }
     }
- 
+ 
     func simulate() -> String {
         var chocolateStock=12; var gummyStock=10; var lollipopStock=12; var caramelStock=8
         var soldChocolate=0; var soldGummy=0; var soldLollipop=0; var soldCaramel=0; var cash=0
         var lines: [String] = []
- 
+ 
         for minute in 1...60 {
             if minute%2==0 && gummyStock>0 { gummyStock-=1; soldGummy+=1; cash+=2; lines.append("m\(minute): Gummy sold") }
             if minute%3==0 && lollipopStock>0 { lollipopStock-=1; soldLollipop+=1; cash+=2; lines.append("m\(minute): Lollipop sold") }
@@ -956,14 +956,14 @@ struct ContentView: View {
             }
             if minute%20==0 { chocolateStock+=2; gummyStock+=2; lollipopStock+=2; caramelStock+=2 }
         }
- 
+ 
         lines.append("FINAL: Cash=$\(cash) | Best: Gummy(\(soldGummy))")
         return lines.joined(separator:"\n")
     }
 }</code></pre>
           </details>
         </article>
- 
+ 
         <article class="card">
           <h3>SwiftUI Hot Chocolate Machine</h3>
           <p>Temperature simulation with auto-stop, status messages, and pseudocode.</p>
@@ -971,7 +971,7 @@ struct ContentView: View {
           <details>
             <summary>▸ Show Swift code</summary>
             <pre><code>import SwiftUI
- 
+ 
 func hotChocolateMachine() -> [String] {
     let startTemp = 20; var currentTemp = startTemp; var out: [String] = []
     for minute in 1...20 {
@@ -987,7 +987,7 @@ func hotChocolateMachine() -> [String] {
 }</code></pre>
           </details>
         </article>
- 
+ 
         <article class="card">
           <h3>SwiftUI My Array V1</h3>
           <p>Visual array map showing my favorite games at each index.</p>
@@ -995,10 +995,10 @@ func hotChocolateMachine() -> [String] {
           <details>
             <summary>▸ Show Swift code</summary>
             <pre><code>import SwiftUI
- 
+ 
 struct ContentView: View {
     let games = ["League Of Legends","Fortnite","FC 26","Valorant"]
- 
+ 
     var body: some View {
         VStack(spacing:20) {
             Text("My Array Map V1 – Gaming").font(.title2).padding(.bottom,10)
@@ -1012,7 +1012,7 @@ struct ContentView: View {
 }</code></pre>
           </details>
         </article>
- 
+ 
         <article class="card">
           <h3>World Clock V1</h3>
           <p>A simple navigation list of world cities for a clock app skeleton.</p>
@@ -1021,10 +1021,10 @@ struct ContentView: View {
           <details>
             <summary>▸ Show Swift code</summary>
             <pre><code>import SwiftUI
- 
+ 
 struct ContentView: View {
     let cities = ["🇬🇧 London","🇹🇷 Istanbul","🇺🇸 New York","🇯🇵 Tokyo","🇫🇷 Paris","🇦🇺 Sydney"]
- 
+ 
     var body: some View {
         NavigationView {
             List(cities, id:\.self) { city in
@@ -1036,7 +1036,7 @@ struct ContentView: View {
 }</code></pre>
           </details>
         </article>
- 
+ 
         <article class="card">
           <h3>List Project — Ice Cream</h3>
           <p>A SwiftUI list of ice cream flavors with matching background colors and a triangle cone.</p>
@@ -1048,7 +1048,7 @@ struct ContentView: View {
             <a class="chip-link" href="https://www.veed.io/view/31b0751a-1a14-4b42-81c0-a61083b7bef9" target="_blank" rel="noopener">Open video</a>
           </div>
         </article>
- 
+ 
         <article class="card">
           <h3>Swift Design Challenge v1 — Figma</h3>
           <p>First Figma design inspired by Nadin, a Hisar graduate. Goal: a STEM learning app for students.</p>
@@ -1058,14 +1058,14 @@ struct ContentView: View {
             <a class="chip-link" href="https://www.figma.com/design/odNDJr4HWsHsUHdgTANDLO/Untitled" target="_blank" rel="noopener">Open Figma</a>
           </div>
         </article>
- 
+ 
         <article class="card">
           <h3>SwiftUI Pixel Painter</h3>
           <p>Paint cells on a 10×10 grid by entering an index number (0–99).</p>
           <div class="tags"><span class="tag tag-blue">SwiftUI</span></div>
           <img src="https://canortn.github.io/images/Pixel_Painter.png" alt="Pixel painter output" />
         </article>
- 
+ 
         <article class="card">
           <h3>Big Idea 3 Review — Code Projects</h3>
           <p>A collection of AP CSP practice Swift Playgrounds projects.</p>
@@ -1076,7 +1076,7 @@ struct ContentView: View {
             <a class="chip-link" href="https://github.com/canortn/canortn.github.io/tree/main/Lunch%20Money%20Calculator.swiftpm" target="_blank" rel="noopener">Lunch Money</a>
           </div>
         </article>
- 
+ 
         <article class="card">
           <h3>Swift Design Challenge v2 — Figma</h3>
           <p>Updated design with cleaner layout and new animations.</p>
@@ -1087,7 +1087,7 @@ struct ContentView: View {
             <a class="chip-link" href="https://www.veed.io/view/251d4289-edab-4985-96a0-48dbb6037cc3" target="_blank" rel="noopener">Watch walkthrough</a>
           </div>
         </article>
- 
+ 
         <article class="card">
           <h3>SwiftUI Robot Movement</h3>
           <p>Robot navigates a 7×7 grid, avoids obstacles, and traces its path.</p>
@@ -1096,27 +1096,27 @@ struct ContentView: View {
           <details>
             <summary>▸ Show Swift code</summary>
             <pre><code>import SwiftUI
- 
+ 
 struct Position: Equatable { var x: Int; var y: Int }
- 
+ 
 struct ContentView: View {
     let gridSize = 7
     @State var robotX=0; @State var robotY=0; @State var path:[Position]=[]
     let obstacles:[Position] = [Position(x:3,y:1),Position(x:2,y:4)]
     @State var directions:[String]=[]; @State var steps:[Int]=[]
     @State var message = "Tap Set Path then Run"
- 
+ 
     func move(direction:String,steps:Int) {
         // moves robot step by step, stops at obstacles or grid edge
     }
- 
+ 
     func filter_games(game_infos:[String],game_name:String)->[String] {
         game_infos.filter { $0.hasPrefix(game_name) }
     }
 }</code></pre>
           </details>
         </article>
- 
+ 
         <article class="card">
           <h3>SwiftUI My Name's Initials</h3>
           <p>Letters C and O drawn with a 10×10 dot grid — yellow and blue.</p>
@@ -1124,11 +1124,11 @@ struct ContentView: View {
           <details>
             <summary>▸ Show Swift code</summary>
             <pre><code>import SwiftUI
- 
+ 
 struct ContentView: View {
     let gridSize=10; let dotSize:CGFloat=18; let gap:CGFloat=8
     let cColor:Color = .yellow; let oColor:Color = .blue
- 
+ 
     var body: some View {
         ZStack {
             Color.black.ignoresSafeArea()
@@ -1138,7 +1138,7 @@ struct ContentView: View {
             }
         }
     }
- 
+ 
     func shouldDraw(letter:Character,row:Int,col:Int)->Bool {
         switch letter {
         case "C": return ((row==0||row==gridSize-1)&&(1...gridSize-2).contains(col))||(col==0&&(1...gridSize-2).contains(row))
@@ -1149,7 +1149,7 @@ struct ContentView: View {
 }</code></pre>
           </details>
         </article>
- 
+ 
         <article class="card">
           <h3>SwiftUI Rock Paper Scissors</h3>
           <p>Turkish-language RPS game against AI with win/lose/tie detection.</p>
@@ -1158,16 +1158,16 @@ struct ContentView: View {
             <summary>▸ Show Swift code</summary>
             <pre><code>struct GameLogic {
     let choices = ["✊","✋","✌️"]
- 
+ 
     enum Outcome {
         case win, lose, tie
         var text: String {
             switch self { case .win: return "Kazandın!"; case .lose: return "Kaybettin!"; case .tie: return "Berabere!" }
         }
     }
- 
+ 
     func randomComputerChoice() -> String { choices.randomElement() ?? "✊" }
- 
+ 
     func determineWinner(userChoice:String,computerChoice:String)->Outcome {
         if userChoice==computerChoice { return .tie }
         if (userChoice=="✊"&&computerChoice=="✌️")||(userChoice=="✋"&&computerChoice=="✊")||(userChoice=="✌️"&&computerChoice=="✋") { return .win }
@@ -1176,7 +1176,7 @@ struct ContentView: View {
 }</code></pre>
           </details>
         </article>
- 
+ 
         <article class="card">
           <h3>Binary Search Protocol</h3>
           <p>Binary search over a sorted integer database with step-by-step console output.</p>
@@ -1186,7 +1186,7 @@ struct ContentView: View {
             <pre><code>let database = [2,5,8,12,16,23,38,56,72,91]
 let targetID = 23
 var low=0; var high=database.count-1; var steps=0; var foundIndex:Int?=nil
- 
+ 
 while low &lt;= high && foundIndex==nil {
     let mid = (low+high)/2; steps+=1
     print("> Step \(steps): Checking [\(mid)] -> \(database[mid])")
@@ -1194,11 +1194,11 @@ while low &lt;= high && foundIndex==nil {
     else if database[mid] &lt; targetID { low=mid+1 }
     else { high=mid-1 }
 }
- 
+ 
 if let idx=foundIndex { print("> SUCCESS at Index \(idx) in \(steps) steps.") }</code></pre>
           </details>
         </article>
- 
+ 
         <article class="card">
           <h3>AP CSP Create Task — All Stages</h3>
           <div class="tags"><span class="tag tag-amber">AP CSP</span></div>
@@ -1217,17 +1217,17 @@ if let idx=foundIndex { print("> SUCCESS at Index \(idx) in \(steps) steps.") }<
             <a class="chip-link chip-link-primary" href="https://drive.google.com/file/d/13dGY32ypV_c2DDDsyuqzUreSny-w2duN/view?usp=sharing" target="_blank" rel="noopener">Stage 5 — Video</a>
           </div>
         </article>
- 
+ 
       </div><!-- /grid -->
     </section>
- 
+ 
     <!-- ═══════════════════════════════════ PROJECTS 3 (NEW) -->
     <section id="projects-3" class="page" data-title="Projects 3 — Can Ortanç">
       <h2 class="section-title">Projects 3</h2>
       <p class="section-sub">AP CSP Final Project — Dolandırıcı Radar &amp; Component C Reference</p>
- 
+ 
       <div class="grid">
- 
+ 
         <!-- FEATURED CARD: Dolandırıcı Radar -->
         <article class="card card-featured">
           <div class="feat-header">
@@ -1237,14 +1237,14 @@ if let idx=foundIndex { print("> SUCCESS at Index \(idx) in \(steps) steps.") }<
               <span class="sub">AP CSP Final Project · TÜBİTAK 2204-A · Siber Güvenlik / Cybersecurity</span>
             </div>
           </div>
- 
+ 
           <div class="tags">
             <span class="tag tag-blue">Swift / SwiftUI</span>
             <span class="tag tag-teal">iOS · Xcode</span>
             <span class="tag tag-green">Cybersecurity</span>
             <span class="tag tag-amber">AP CSP Final</span>
           </div>
- 
+ 
           <div class="feat-body">
             <div>
               <p style="margin-top:8px;">
@@ -1252,7 +1252,7 @@ if let idx=foundIndex { print("> SUCCESS at Index \(idx) in \(steps) steps.") }<
                 scenarios — SMS messages, pop-ups, emails — and decide if each one is real or fraud.
                 After every answer they get instant educational feedback explaining the red flags.
               </p>
- 
+ 
               <ul class="feature-list">
                 <li><span class="fi">❓</span><span>10 gerçek hayat senaryosu (real-life scenarios)</span></li>
                 <li><span class="fi">⚡</span><span>Her cevaba anında geri bildirim (instant feedback)</span></li>
@@ -1260,12 +1260,12 @@ if let idx=foundIndex { print("> SUCCESS at Index \(idx) in \(steps) steps.") }<
                 <li><span class="fi">📊</span><span>Progress bar &amp; live score tracking</span></li>
                 <li><span class="fi">🎯</span><span>TÜBİTAK 2204-A thematic area: Cybersecurity</span></li>
               </ul>
- 
+ 
               <div class="links">
                 <a class="chip-link chip-link-primary" href="https://github.com/canortn" target="_blank" rel="noopener">GitHub Repo</a>
                 <a class="chip-link" href="https://drive.google.com/file/d/13dGY32ypV_c2DDDsyuqzUreSny-w2duN/view?usp=sharing" target="_blank" rel="noopener">Demo Video</a>
               </div>
- 
+ 
               <div style="margin-top:20px;">
                 <p class="label">Technical Requirements Covered</p>
                 <ul>
@@ -1279,7 +1279,7 @@ if let idx=foundIndex { print("> SUCCESS at Index \(idx) in \(steps) steps.") }<
                 </ul>
               </div>
             </div>
- 
+ 
             <div>
               <p class="label">App Screenshots</p>
               <div class="screenshots">
@@ -1294,7 +1294,7 @@ if let idx=foundIndex { print("> SUCCESS at Index \(idx) in \(steps) steps.") }<
             </div>
           </div>
         </article>
- 
+ 
         <!-- AP CSP Final Project Submission -->
         <article class="card">
           <h3>AP CSP Final Project — Submission</h3>
@@ -1323,7 +1323,7 @@ if let idx=foundIndex { print("> SUCCESS at Index \(idx) in \(steps) steps.") }<
             <a class="chip-link chip-link-primary" href="https://drive.google.com/file/d/13dGY32ypV_c2DDDsyuqzUreSny-w2duN/view?usp=sharing" target="_blank" rel="noopener">Stage 5 — Video</a>
           </div>
         </article>
- 
+ 
         <!-- Component C: Procedure -->
         <article class="card">
           <h3>Component C — Procedure</h3>
@@ -1335,27 +1335,27 @@ if let idx=foundIndex { print("> SUCCESS at Index \(idx) in \(steps) steps.") }<
             The <strong>filter_games</strong> function is my named procedure with a parameter.
             It takes a list of game info strings and a game name, then returns only the matching entries.
           </p>
- 
+ 
           <p class="label" style="margin-top:14px;">Procedure Definition (i)</p>
           <img src="images/component-c-procedure.png" alt="filter_games function definition" />
- 
+ 
           <p class="label" style="margin-top:14px;">Call Site (ii)</p>
           <img src="images/component-c-call.png" alt="filter_games call" />
- 
+ 
           <details style="margin-top:8px;">
             <summary>▸ Show full procedure code</summary>
             <pre><code>func filter_games(game_infos: [String], game_name: String) -> [String] {
     var results: [String] = []
- 
+ 
     for info in game_infos {
         if info.hasPrefix(game_name) {
             results.append(info)
         }
     }
- 
+ 
     return results
 }
- 
+ 
 // Call site:
 let results = filter_games(
     game_infos: game_infos,
@@ -1363,7 +1363,7 @@ let results = filter_games(
 )</code></pre>
           </details>
         </article>
- 
+ 
         <!-- Component C: List -->
         <article class="card">
           <h3>Component C — List</h3>
@@ -1375,26 +1375,26 @@ let results = filter_games(
             <strong>game_infos</strong> is my list (array). It stores game records as
             semicolon-separated strings: <code style="font-family:var(--mono);font-size:12px;">name;date;players</code>.
           </p>
- 
+ 
           <p class="label" style="margin-top:14px;">Declaration (i-a)</p>
           <img src="images/component-c-list-decl.png" alt="var game_infos: [String] = []" />
- 
+ 
           <p class="label" style="margin-top:14px;">Append to List (i-b)</p>
           <img src="images/component-c-append.png" alt="game_infos.append(...)" />
- 
+ 
           <p class="label" style="margin-top:14px;">Iterate &amp; Display (ii)</p>
           <img src="images/component-c-iteration.png" alt="for info in game_infos loop" />
- 
+ 
           <details style="margin-top:8px;">
             <summary>▸ Show full list code</summary>
             <pre><code>// Declaration
 var game_infos: [String] = []
- 
+ 
 // Adding a record
 game_infos.append(
     game_types[num] + ";" + date + ";" + player_list
 )
- 
+ 
 // Iterating and printing
 for info in game_infos {
     let values = info.split(separator: ";")
@@ -1402,7 +1402,7 @@ for info in game_infos {
 }</code></pre>
           </details>
         </article>
- 
+ 
         <!-- CSP Portfolio Video -->
         <article class="card">
           <h3>AP CSP Portfolio Video</h3>
@@ -1421,29 +1421,69 @@ for info in game_infos {
             <a class="chip-link chip-link-primary" href="https://drive.google.com/file/d/13dGY32ypV_c2DDDsyuqzUreSny-w2duN/view?usp=sharing" target="_blank" rel="noopener">Also on Drive</a>
           </div>
         </article>
- 
+ 
       </div><!-- /grid -->
     </section>
- 
+ 
     <!-- ═══════════════════════════════════ BIG IDEAS -->
     <section id="big-ideas" class="page" data-title="Big Ideas — Can Ortanç">
       <h2 class="section-title">Big Ideas</h2>
-      <p class="section-sub">AP CSP thematic reflections</p>
- 
+      <p class="section-sub">AP CSP — 5 Big Ideas, key concepts &amp; reflections</p>
+ 
+      <!-- ── BIG IDEA 1 ── -->
       <div class="bi-section">
-        <h3 style="font-size:20px;margin-bottom:14px;">Big Idea 1 — Creative Development</h3>
+        <h3 style="font-size:20px;margin-bottom:14px;">
+          <span style="color:var(--blue-light);font-family:var(--mono);font-size:14px;margin-right:8px;">01</span>
+          Big Idea 1 — Creative Development
+        </h3>
         <div class="card">
           <p>
-            In this unit, I learned to turn an idea into a working program by planning, testing, presenting, and explaining my design.
-            I took notes and screenshots as documentation and made a short narration to show how the program works and why I built it.
+            In this unit I learned how to turn an idea into a working program by planning, testing, presenting, and explaining my design.
+            I documented everything with notes and screenshots, and made a short narration to show how the program works and why I built it.
           </p>
-          <ul style="margin-top:12px;">
-            <li><strong>1.1 Collaboration:</strong> Used teamwork to split tasks and help each other debug.</li>
-            <li><strong>1.2 Program Design &amp; Development:</strong> Wrote algorithms, pseudocode, and used debugging to refine behavior.</li>
-            <li><strong>1.3 Program Function &amp; Purpose:</strong> Defined a clear goal and audience, mapped input/output, grouped logic into functions.</li>
-            <li><strong>1.4 Identifying &amp; Correcting Errors:</strong> Tested edge cases and added error handling to avoid crashes.</li>
+ 
+          <div class="divider"></div>
+ 
+          <h4>1.1 — Collaboration</h4>
+          <p>Good programs are rarely built alone. Collaboration means sharing tasks, reviewing each other's code, and combining different perspectives to produce better results. I worked with classmates on the Tic-Tac-Toe project — we split debugging tasks and caught errors faster together than I would have alone.</p>
+          <ul>
+            <li><strong>Key concept:</strong> Computing is a collaborative discipline. Pair programming, code reviews, and feedback loops all lead to stronger programs.</li>
+            <li><strong>Real-world example:</strong> Open-source projects on GitHub rely entirely on contributors collaborating without ever meeting in person.</li>
+            <li><strong>Reflection:</strong> I learned that explaining my code to someone else often reveals bugs I missed. Teaching is one of the best ways to understand something deeply.</li>
           </ul>
-          <div class="video-container" style="margin-top:14px;">
+ 
+          <div class="divider"></div>
+ 
+          <h4>1.2 — Program Design &amp; Development</h4>
+          <p>Before writing code, a good developer thinks about the structure: what inputs go in, what outputs come out, and what steps happen in between. I used pseudocode and sketches before writing any Swift.</p>
+          <ul>
+            <li><strong>Key concept:</strong> Program development is iterative. You design, build, test, revise, and repeat. The first version is never the final one.</li>
+            <li><strong>Real-world example:</strong> Apps like Instagram go through hundreds of design iterations before any feature ships to users.</li>
+            <li><strong>Reflection:</strong> Spending more time on planning saved me time during coding. When I skipped planning, I had to rewrite entire sections.</li>
+          </ul>
+ 
+          <div class="divider"></div>
+ 
+          <h4>1.3 — Program Function &amp; Purpose</h4>
+          <p>Every program should have a clear reason for existing. I defined the goal and audience for each project before I started building, which helped me make better design decisions.</p>
+          <ul>
+            <li><strong>Key concept:</strong> A program's purpose is the problem it solves. Its function is how it solves it. These are different things — you can have the right function but the wrong purpose.</li>
+            <li><strong>Real-world example:</strong> TikTok's purpose is entertainment; its function is an infinite scroll algorithm that keeps users watching.</li>
+            <li><strong>Reflection:</strong> For Dolandırıcı Radar, the purpose (cybersecurity awareness) shaped every design decision — the question types, the feedback messages, even the color choices.</li>
+          </ul>
+ 
+          <div class="divider"></div>
+ 
+          <h4>1.4 — Identifying &amp; Correcting Errors</h4>
+          <p>Bugs are unavoidable. The skill is in finding and fixing them systematically. I learned to use print statements, test edge cases, and isolate problems by commenting out sections of code.</p>
+          <ul>
+            <li><strong>Syntax errors:</strong> The code won't compile — missing brackets, typos, wrong data types.</li>
+            <li><strong>Logic errors:</strong> The code runs but gives wrong output — hardest to catch.</li>
+            <li><strong>Runtime errors:</strong> The program crashes during use — often from unexpected input or out-of-bounds access.</li>
+            <li><strong>Reflection:</strong> Most of my debugging time goes to logic errors. I now test every edge case before declaring something "done."</li>
+          </ul>
+ 
+          <div class="video-container" style="margin-top:16px;">
             <iframe src="https://www.veed.io/view/99754995-1d80-494b-b3f9-456cede60ffa?panel=share" title="Big Idea 1 narration" frameborder="0" allowfullscreen></iframe>
           </div>
           <div class="links">
@@ -1451,37 +1491,69 @@ for info in game_infos {
           </div>
         </div>
       </div>
- 
+ 
       <div class="divider"></div>
- 
+ 
+      <!-- ── BIG IDEA 2 ── -->
       <div class="bi-section">
-        <h3 style="font-size:20px;margin-bottom:14px;">Big Idea 2 — Data</h3>
+        <h3 style="font-size:20px;margin-bottom:14px;">
+          <span style="color:var(--teal-light);font-family:var(--mono);font-size:14px;margin-right:8px;">02</span>
+          Big Idea 2 — Data
+        </h3>
         <div class="card">
           <p>
             In this unit I learned how to transform raw data into meaningful information. I practiced reading metadata,
-            cleaning messy datasets, and recognizing patterns, limits, and biases.
+            cleaning messy datasets, recognizing patterns, and understanding the limits and biases that come with data collection.
           </p>
-          <ul style="margin-top:12px;">
-            <li><strong>2.1 Data vs. Information:</strong> Data are raw facts; information is the meaning we extract by processing them.</li>
-            <li><strong>2.2 Patterns &amp; Correlation:</strong> Correlation means two variables change together — but it's not causation.</li>
-            <li><strong>2.3 Metadata:</strong> "Data about data" lets apps sort and filter without touching original content.</li>
-            <li><strong>2.4 Data Cleaning:</strong> Missing, repeated, or inconsistent values distort results before you even start.</li>
-          </ul>
+ 
           <div class="divider"></div>
-          <h4>Reflection — Compression &amp; Representation</h4>
+ 
+          <h4>2.1 — Binary Numbers &amp; Data Representation</h4>
+          <p>Computers store everything — text, images, sound — as binary (0s and 1s). Understanding this helps you understand why file sizes, color limits, and precision trade-offs exist.</p>
           <ul>
-            <li><strong>Key concept:</strong> File type and compression balance quality, storage, and speed.</li>
-            <li><strong>Real-world:</strong> I use PNG for icons and JPEG for photos on this site.</li>
-            <li><strong>Next step:</strong> Experiment with adaptive compression in future projects.</li>
+            <li><strong>Key concept:</strong> All digital data is ultimately represented in binary. More bits = more possible values (2ⁿ combinations with n bits).</li>
+            <li><strong>Real-world example:</strong> A 24-bit color image stores 8 bits per channel (R, G, B), giving 16.7 million possible colors per pixel.</li>
+            <li><strong>My project:</strong> The 4-Bit Binary Counter shows exactly this — 4 bits represent 16 values (0–15).</li>
+            <li><strong>Reflection:</strong> Building the binary counter made the abstract concept of bits feel very concrete and visual.</li>
           </ul>
+ 
           <div class="divider"></div>
-          <h4>Reflection — Privacy &amp; Anonymization</h4>
+ 
+          <h4>2.2 — Data Compression</h4>
+          <p>Compression reduces file size to save storage and speed up transmission. There are two types: lossless (no data lost) and lossy (some data is permanently removed).</p>
           <ul>
-            <li><strong>Key concept:</strong> Hashing, encryption, and k-anonymity reduce risk when sharing data.</li>
-            <li><strong>Real-world:</strong> Hash student IDs before analyzing usage data.</li>
-            <li><strong>Next step:</strong> Test different k values and think more about re-identification risks.</li>
+            <li><strong>Lossless:</strong> ZIP, PNG — the original can be perfectly reconstructed.</li>
+            <li><strong>Lossy:</strong> JPEG, MP3 — smaller files, but you lose some quality permanently.</li>
+            <li><strong>Key concept:</strong> Compression always involves a trade-off between file size, quality, and speed.</li>
+            <li><strong>Real-world example:</strong> Streaming platforms like Spotify use lossy compression so songs load fast without being too large.</li>
+            <li><strong>Reflection:</strong> I use PNG for icons (lossless, sharp edges) and JPEG for photos (lossy, acceptable quality). Knowing the difference matters.</li>
           </ul>
-          <div class="video-container" style="margin-top:14px;">
+          <img src="https://canortn.github.io/images/Data_Compression.png" alt="Data compression reflection" />
+ 
+          <div class="divider"></div>
+ 
+          <h4>2.3 — Extracting Information from Data</h4>
+          <p>Raw data doesn't tell you much on its own. You need to organize, filter, and visualize it to find patterns and draw conclusions.</p>
+          <ul>
+            <li><strong>Key concept:</strong> Patterns and trends only emerge after processing. The same data can tell very different stories depending on how you look at it.</li>
+            <li><strong>Correlation vs causation:</strong> Two things changing together doesn't mean one causes the other.</li>
+            <li><strong>Real-world example:</strong> A school's test score data might correlate with class size — but that doesn't mean reducing class size always improves scores.</li>
+            <li><strong>Reflection:</strong> The hardest part is resisting the urge to jump to conclusions. Good data analysis requires patience and skepticism.</li>
+          </ul>
+          <img src="https://canortn.github.io/images/Extracting Information from Data.png" alt="Extracting information from data" />
+ 
+          <div class="divider"></div>
+ 
+          <h4>2.4 — Using Programs with Data</h4>
+          <p>Programs can process large datasets far faster than any human. But they can only be as good as the data they're given — bad data in, bad results out.</p>
+          <ul>
+            <li><strong>Metadata:</strong> Data about data (e.g. photo date, GPS, file size) that helps apps sort and filter without reading the actual content.</li>
+            <li><strong>Data cleaning:</strong> Missing, duplicated, or inconsistent values distort analysis. Cleaning is always the first step before drawing any conclusions.</li>
+            <li><strong>Privacy:</strong> Hashing, encryption, and anonymization reduce the risk of exposing personal data when sharing datasets.</li>
+            <li><strong>Reflection:</strong> My game_infos list from the AP CSP project is a small example of structured data — each entry stores name, date, and players in a consistent format so the program can parse it reliably.</li>
+          </ul>
+ 
+          <div class="video-container" style="margin-top:16px;">
             <iframe src="https://www.veed.io/view/568116fd-c6a5-4935-af14-4764e87adbcf?source=Homepage&panel=share" title="Big Idea 2 narration" frameborder="0" allowfullscreen></iframe>
           </div>
           <div class="links">
@@ -1489,15 +1561,245 @@ for info in game_infos {
           </div>
         </div>
       </div>
+ 
+      <div class="divider"></div>
+ 
+      <!-- ── BIG IDEA 3 ── -->
+      <div class="bi-section">
+        <h3 style="font-size:20px;margin-bottom:14px;">
+          <span style="color:var(--green);font-family:var(--mono);font-size:14px;margin-right:8px;">03</span>
+          Big Idea 3 — Algorithms &amp; Programming
+        </h3>
+        <div class="card">
+          <p>
+            This is the largest Big Idea. It covers the core building blocks of programming: variables, conditions, loops, lists, functions, and algorithms.
+            Most of my Swift projects are direct applications of these concepts.
+          </p>
+ 
+          <div class="divider"></div>
+ 
+          <h4>3.1 — Variables &amp; Assignments</h4>
+          <p>Variables store data that can change during a program's run. In Swift I used <code style="font-family:var(--mono);font-size:12px;">@State</code> for variables that should trigger a UI refresh when they change.</p>
+          <ul>
+            <li><strong>Key concept:</strong> A variable is a named container for a value. Assigning a new value replaces the old one.</li>
+            <li><strong>My project:</strong> In the Clock Game, <code style="font-family:var(--mono);font-size:12px;">var time = 20</code> and <code style="font-family:var(--mono);font-size:12px;">var playerX: CGFloat = 0</code> track the game state in real time.</li>
+            <li><strong>Reflection:</strong> Choosing good variable names made my code dramatically easier to read and debug.</li>
+          </ul>
+ 
+          <div class="divider"></div>
+ 
+          <h4>3.2 — Data Abstraction (Lists)</h4>
+          <p>Instead of tracking individual items separately, lists let you group related data and handle it with loops. This is what makes programs scalable.</p>
+          <ul>
+            <li><strong>Key concept:</strong> A list stores multiple values under one name. You access them by index, iterate over them with loops, and modify them with append/remove.</li>
+            <li><strong>My project:</strong> <code style="font-family:var(--mono);font-size:12px;">var game_infos: [String] = []</code> — one list holds all game records. Without it, I'd need a separate variable for every game.</li>
+            <li><strong>Reflection:</strong> Once I understood lists, I started seeing everything as data that could be organized this way — questions in a quiz, flavors in an ice cream app, cities in a clock.</li>
+          </ul>
+ 
+          <div class="divider"></div>
+ 
+          <h4>3.3 — Boolean Expressions &amp; Conditionals</h4>
+          <p>Conditionals let programs make decisions. They evaluate a boolean expression (true/false) and branch into different paths accordingly.</p>
+          <ul>
+            <li><strong>Key concept:</strong> <code style="font-family:var(--mono);font-size:12px;">if / else if / else</code> chains control which code runs. Nested conditionals allow more complex logic.</li>
+            <li><strong>My project:</strong> The Hot Chocolate Machine uses 4 temperature thresholds — each one leads to a different status message and possibly an auto-stop.</li>
+            <li><strong>Boolean operators:</strong> AND (<code style="font-family:var(--mono);font-size:12px;">&amp;&amp;</code>), OR (<code style="font-family:var(--mono);font-size:12px;">||</code>), NOT (<code style="font-family:var(--mono);font-size:12px;">!</code>) let you combine conditions.</li>
+            <li><strong>Reflection:</strong> The RPS game's <code style="font-family:var(--mono);font-size:12px;">determineWinner</code> function is a clean example of boolean logic — 3 win conditions checked with OR.</li>
+          </ul>
+ 
+          <div class="divider"></div>
+ 
+          <h4>3.4 — Iteration (Loops)</h4>
+          <p>Loops repeat a block of code without you having to write it out multiple times. They're what make processing lists possible.</p>
+          <ul>
+            <li><strong>Key concept:</strong> <code style="font-family:var(--mono);font-size:12px;">for</code> loops iterate a known number of times. <code style="font-family:var(--mono);font-size:12px;">while</code> loops run until a condition becomes false.</li>
+            <li><strong>My project:</strong> The Binary Search protocol uses a <code style="font-family:var(--mono);font-size:12px;">while low &lt;= high</code> loop — it keeps halving the search range until the target is found or the range is empty.</li>
+            <li><strong>My project:</strong> The Candy Shop simulation runs a <code style="font-family:var(--mono);font-size:12px;">for minute in 1...60</code> loop — simulating 60 minutes of sales in milliseconds.</li>
+            <li><strong>Reflection:</strong> Replacing repetitive code with a loop is one of the most satisfying moments in programming.</li>
+          </ul>
+ 
+          <div class="divider"></div>
+ 
+          <h4>3.5 — Developing Procedures (Functions)</h4>
+          <p>Procedures (functions) group reusable code under a name. You define it once, then call it whenever you need it — with different inputs each time.</p>
+          <ul>
+            <li><strong>Key concept:</strong> Functions reduce repetition, make code readable, and allow you to test isolated pieces of logic independently.</li>
+            <li><strong>Parameters:</strong> Inputs passed into the function. Return values are the outputs sent back.</li>
+            <li><strong>My project:</strong> <code style="font-family:var(--mono);font-size:12px;">filter_games(game_infos:, game_name:)</code> is a procedure that takes a list and a name, and returns a filtered list. It can be reused for any game type without rewriting the logic.</li>
+            <li><strong>Reflection:</strong> When I find myself copy-pasting the same block of code twice, that's the signal to turn it into a function.</li>
+          </ul>
+ 
+          <div class="divider"></div>
+ 
+          <h4>3.6 — Algorithmic Efficiency &amp; Search</h4>
+          <p>Not all algorithms that solve the same problem are equally good. Efficiency matters — especially with large datasets.</p>
+          <ul>
+            <li><strong>Linear search:</strong> Check every item one by one. Works on any list. Time: O(n).</li>
+            <li><strong>Binary search:</strong> Requires a sorted list. Halves the search space each step. Time: O(log n).</li>
+            <li><strong>Example:</strong> Finding 23 in a 10-item list — linear search takes up to 10 steps, binary search takes at most 4.</li>
+            <li><strong>My project:</strong> The Binary Search Protocol demonstrates this step-by-step with console output showing exactly how many comparisons it takes.</li>
+            <li><strong>Reflection:</strong> The difference between O(n) and O(log n) seems small at 10 items, but at 1 billion items it's the difference between 1 billion and 30 steps.</li>
+          </ul>
+ 
+          <div class="divider"></div>
+ 
+          <h4>3.7 — Simulations</h4>
+          <p>Simulations model real-world processes in code so we can study them without real-world cost or risk.</p>
+          <ul>
+            <li><strong>Key concept:</strong> A simulation abstracts reality — it captures the important parts while ignoring irrelevant ones. All simulations have limitations.</li>
+            <li><strong>My project:</strong> The Candy Shop Simulation models 60 minutes of a shop — customers arrive at defined intervals, stock depletes, restocking happens on schedule.</li>
+            <li><strong>Limitations:</strong> Real customers don't arrive on exact intervals. The simulation is useful for understanding patterns, not predicting exact outcomes.</li>
+            <li><strong>Reflection:</strong> Building the simulation made me appreciate how much complexity real-world systems hide — even a simple candy shop has dozens of variables.</li>
+          </ul>
+        </div>
+      </div>
+ 
+      <div class="divider"></div>
+ 
+      <!-- ── BIG IDEA 4 ── -->
+      <div class="bi-section">
+        <h3 style="font-size:20px;margin-bottom:14px;">
+          <span style="color:var(--amber);font-family:var(--mono);font-size:14px;margin-right:8px;">04</span>
+          Big Idea 4 — Computing Systems &amp; Networks
+        </h3>
+        <div class="card">
+          <p>
+            This unit is about how computers are connected and how the internet actually works — from physical hardware to the protocols that
+            let a message travel from Istanbul to Tokyo in milliseconds.
+          </p>
+ 
+          <div class="divider"></div>
+ 
+          <h4>4.1 — The Internet</h4>
+          <p>The internet is a global network of interconnected devices. It was designed to be decentralized — no single point of failure can take the whole thing down.</p>
+          <ul>
+            <li><strong>IP Address:</strong> A unique identifier for every device on the network (like a postal address).</li>
+            <li><strong>DNS:</strong> Translates human-readable domain names (like <code style="font-family:var(--mono);font-size:12px;">canortn.github.io</code>) into IP addresses that computers use.</li>
+            <li><strong>HTTP / HTTPS:</strong> The protocol that governs how web pages are requested and delivered. HTTPS adds encryption via TLS.</li>
+            <li><strong>Packets:</strong> Data is broken into small packets, sent independently across the network, and reassembled at the destination. This is called packet switching.</li>
+            <li><strong>My project:</strong> This portfolio site is served from GitHub's servers over HTTPS. Every time you load it, your browser makes HTTP GET requests for the HTML, CSS, fonts, and images.</li>
+            <li><strong>Reflection:</strong> I never thought about what happens between typing a URL and seeing a page. Now I understand every step — DNS lookup, TCP handshake, HTTPS negotiation, file transfer, rendering.</li>
+          </ul>
+ 
+          <div class="divider"></div>
+ 
+          <h4>4.2 — Fault Tolerance</h4>
+          <p>The internet was designed by ARPA to survive partial failures — even nuclear strikes. This is achieved through redundancy: multiple paths between any two points.</p>
+          <ul>
+            <li><strong>Key concept:</strong> Redundancy means if one path goes down, packets are automatically rerouted through another. No single point of failure takes the system down.</li>
+            <li><strong>Real-world example:</strong> When an undersea cable breaks, internet traffic is rerouted through other cables. Users might experience slowness, but they don't lose connection entirely.</li>
+            <li><strong>Trade-off:</strong> More redundancy = more fault tolerance, but also higher cost and more hardware.</li>
+            <li><strong>Reflection:</strong> GitHub Pages is itself fault-tolerant — it's served from multiple data centers globally. Even if one goes down, the site stays up.</li>
+          </ul>
+ 
+          <div class="divider"></div>
+ 
+          <h4>4.3 — Parallel &amp; Distributed Computing</h4>
+          <p>Some problems are too big or too slow for a single processor. Parallel computing splits a task across multiple processors; distributed computing splits it across multiple machines entirely.</p>
+          <ul>
+            <li><strong>Parallel computing:</strong> Multiple processors work on different parts of the same problem simultaneously. A quad-core CPU can theoretically run 4 tasks at once.</li>
+            <li><strong>Distributed computing:</strong> Tasks spread across many computers over a network. Examples: Google's search index, Bitcoin mining, climate simulations.</li>
+            <li><strong>Key concept:</strong> Not all tasks can be parallelized. Some steps depend on previous results — you have to finish step 1 before step 2 starts. This is called sequential dependency.</li>
+            <li><strong>Real-world example:</strong> Rendering a 3D movie (like Pixar's) distributes individual frames across thousands of computers in a render farm. Each frame can be processed independently.</li>
+            <li><strong>Reflection:</strong> My Swift apps run on a single thread by default. When I added a timer to the Clock Game, I had to think about what runs on the main thread vs. background — a small taste of concurrency.</li>
+          </ul>
+        </div>
+      </div>
+ 
+      <div class="divider"></div>
+ 
+      <!-- ── BIG IDEA 5 ── -->
+      <div class="bi-section">
+        <h3 style="font-size:20px;margin-bottom:14px;">
+          <span style="color:var(--red);font-family:var(--mono);font-size:14px;margin-right:8px;">05</span>
+          Big Idea 5 — Impact of Computing
+        </h3>
+        <div class="card">
+          <p>
+            Technology doesn't just solve problems — it creates new ones. This unit asks the harder questions:
+            who benefits, who gets left behind, and what responsibilities come with building software.
+          </p>
+ 
+          <div class="divider"></div>
+ 
+          <h4>5.1 — Beneficial &amp; Harmful Effects</h4>
+          <p>Almost every technology has both positive and negative impacts. The same tool that connects people can also spread misinformation.</p>
+          <ul>
+            <li><strong>Key concept:</strong> Computing innovations are rarely purely good or purely bad. They bring intended benefits and unintended consequences.</li>
+            <li><strong>Example (beneficial):</strong> GPS navigation saves fuel, reduces accidents, and helps emergency services respond faster.</li>
+            <li><strong>Example (harmful):</strong> GPS also enables mass surveillance and makes people dependent on technology they don't understand.</li>
+            <li><strong>My project:</strong> Dolandırıcı Radar is a direct response to the harmful effects of digital scams — using technology to fight a technology-enabled problem.</li>
+            <li><strong>Reflection:</strong> Every feature I build, I try to ask: who could misuse this? What happens when it goes wrong?</li>
+          </ul>
+ 
+          <div class="divider"></div>
+ 
+          <h4>5.2 — Digital Divide</h4>
+          <p>Not everyone has equal access to technology. The "digital divide" refers to the gap between those who have reliable internet and devices, and those who don't.</p>
+          <ul>
+            <li><strong>Key concept:</strong> Access divides exist along geographic, economic, and generational lines. Rural areas, lower-income households, and older adults are most affected.</li>
+            <li><strong>Consequence:</strong> As more services (banking, education, healthcare) move online, people without access are increasingly excluded.</li>
+            <li><strong>Global example:</strong> During COVID-19 remote learning, millions of students worldwide couldn't participate because they lacked a device or stable internet.</li>
+            <li><strong>My project:</strong> My Scam Prevention App idea was originally designed for older adults who are frequently targeted by scammers — but are also less likely to be tech-literate. The design had to be extremely simple for exactly this reason.</li>
+            <li><strong>Reflection:</strong> Designing for the people least represented in tech is harder — and more important — than designing for people like me.</li>
+          </ul>
+ 
+          <div class="divider"></div>
+ 
+          <h4>5.3 — Computing Bias</h4>
+          <p>Algorithms reflect the data and decisions of the people who built them. If that data or those decisions contain bias, the algorithm will too — often invisibly.</p>
+          <ul>
+            <li><strong>Key concept:</strong> Bias can enter at data collection (who is represented?), model training (what patterns are reinforced?), and deployment (who is affected by errors?).</li>
+            <li><strong>Famous example:</strong> Facial recognition systems have been shown to have much higher error rates for darker-skinned faces, because training datasets were predominantly lighter-skinned.</li>
+            <li><strong>Reflection:</strong> The scenarios in Dolandırıcı Radar are all based on real Turkish-language scams. If I only included English-language examples, the app would be biased toward a certain demographic and miss the actual threats my target users face.</li>
+          </ul>
+ 
+          <div class="divider"></div>
+ 
+          <h4>5.4 — Crowdsourcing</h4>
+          <p>Crowdsourcing uses the collective effort of many people — often online — to complete tasks, gather data, or fund projects.</p>
+          <ul>
+            <li><strong>Key concept:</strong> The internet makes it possible to coordinate large numbers of people at low cost. This can produce results no single expert or organization could achieve alone.</li>
+            <li><strong>Examples:</strong> Wikipedia (collaborative knowledge), reCAPTCHA (solving image recognition tasks while browsing), Folding@home (distributed protein-folding research).</li>
+            <li><strong>Challenge:</strong> Quality control is harder. Anyone can contribute, which means errors and misinformation can also spread.</li>
+            <li><strong>Reflection:</strong> Stack Overflow is the crowdsourced knowledge base I use almost daily for debugging. It's built entirely on volunteer contributions — which says something powerful about what people will build when given the right platform.</li>
+          </ul>
+ 
+          <div class="divider"></div>
+ 
+          <h4>5.5 — Legal &amp; Ethical Concerns</h4>
+          <p>Technology moves faster than the laws designed to govern it. This creates gray areas around privacy, intellectual property, and responsibility.</p>
+          <ul>
+            <li><strong>Intellectual property:</strong> Copyright, Creative Commons, and open-source licenses govern how software and creative works can be used and shared.</li>
+            <li><strong>Privacy laws:</strong> GDPR (Europe) and KVKK (Turkey) regulate how companies collect and store personal data. Violations carry heavy fines.</li>
+            <li><strong>Key concept:</strong> Just because you technically can do something with code doesn't mean you legally or ethically should.</li>
+            <li><strong>Reflection:</strong> When I built the Dolandırıcı Radar, I made sure not to collect any user data. The app works entirely on-device — no accounts, no analytics, no tracking.</li>
+          </ul>
+ 
+          <div class="divider"></div>
+ 
+          <h4>5.6 — Safe Computing</h4>
+          <p>Users and developers both have a responsibility to make computing safer. This means strong passwords, encrypted connections, careful data handling, and awareness of social engineering.</p>
+          <ul>
+            <li><strong>Phishing:</strong> Fake emails or messages that trick users into giving up credentials. This is the most common attack vector and the direct inspiration for Dolandırıcı Radar.</li>
+            <li><strong>Encryption:</strong> Scrambles data so only the intended recipient can read it. HTTPS uses TLS encryption for all web traffic.</li>
+            <li><strong>Strong passwords + 2FA:</strong> Two-factor authentication dramatically reduces unauthorized account access even if a password is stolen.</li>
+            <li><strong>Principle of least privilege:</strong> Apps should only request the permissions they actually need. An app that asks for microphone access but never uses voice should be treated with suspicion.</li>
+            <li><strong>My project:</strong> Dolandırıcı Radar teaches exactly these principles through real examples — recognizing shortened URLs, urgency tactics, fake prizes, and impersonation attempts.</li>
+            <li><strong>Reflection:</strong> The more I learned about cybersecurity for this project, the more I realized how many people — including people I know — are vulnerable to basic attacks. Education is the most scalable defense.</li>
+          </ul>
+        </div>
+      </div>
+ 
     </section>
- 
+ 
     <!-- ═══════════════════════════════════ DOCUMENTATION -->
     <section id="documentation" class="page" data-title="Docs — Can Ortanç">
       <h2 class="section-title">Documentation</h2>
       <p class="section-sub">How things were built and what I learned</p>
- 
+ 
       <div class="grid">
- 
+ 
         <article class="card">
           <h3>How I Made This Website</h3>
           <div class="tags"><span class="tag tag-teal">HTML/CSS/JS</span><span class="tag tag-teal">GitHub Pages</span></div>
@@ -1508,7 +1810,7 @@ for info in game_infos {
           </p>
           <p>Thanks to Ömer H., Mehmet B., and Çağan K. for the help.</p>
         </article>
- 
+ 
         <article class="card">
           <h3>SwiftUI Tic-Tac-Toe — Docs</h3>
           <div class="tags"><span class="tag tag-blue">SwiftUI</span></div>
@@ -1517,7 +1819,7 @@ for info in game_infos {
           <p><strong>Design:</strong> Each tile stores its own value. <code style="font-family:var(--mono);font-size:12px;">checkWinner()</code> checks all 8 lines. <code style="font-family:var(--mono);font-size:12px;">resetBoard()</code> clears state.</p>
           <p><strong>Built with:</strong> ChatGPT study mode + Çağan K. and Eren H.</p>
         </article>
- 
+ 
         <article class="card">
           <h3>Scratch Tic-Tac-Toe — Docs</h3>
           <div class="tags"><span class="tag tag-blue">Scratch</span></div>
@@ -1527,13 +1829,13 @@ for info in game_infos {
             <a class="chip-link" href="https://www.veed.io/view/1f4218c4-9c37-4579-b079-d8ef7a13e7f9?panel=share" target="_blank" rel="noopener">Watch video</a>
           </div>
         </article>
- 
+ 
         <article class="card">
           <h3>Big Idea Summary</h3>
           <div class="tags"><span class="tag tag-teal">AP CSP</span></div>
           <p>Big Idea 1 combines: Collaboration, Program Design &amp; Development, Program Function &amp; Purpose, and Identifying &amp; Correcting Errors. Summarized using Beyza Teacher's presentations and my own notes.</p>
         </article>
- 
+ 
         <article class="card">
           <h3>Cryptography — Vigenère Cipher</h3>
           <div class="tags"><span class="tag tag-blue">Swift</span><span class="tag tag-teal">AP CSP</span></div>
@@ -1561,7 +1863,7 @@ for info in game_infos {
 }</code></pre>
           </details>
         </article>
- 
+ 
         <article class="card">
           <h3>AP CSP Unit 3 — Notes &amp; Video Explanations</h3>
           <div class="tags"><span class="tag tag-teal">AP CSP</span><span class="tag tag-blue">Swift</span></div>
@@ -1570,12 +1872,12 @@ for info in game_infos {
             <a class="chip-link" href="https://docs.google.com/document/d/15LfM9vGkv_XsGrUn818s4FWB0MlQukT4TyovgRoXodM/edit?usp=sharing" target="_blank" rel="noopener">Why Swift Examples?</a>
           </div>
         </article>
- 
+ 
       </div><!-- /grid -->
     </section>
- 
+ 
   </main>
- 
+ 
   <div class="footer-wrap">
     <footer>
       <span>© <span id="year"></span> Can Ortanç</span>
@@ -1585,7 +1887,7 @@ for info in game_infos {
       </div>
     </footer>
   </div>
- 
+ 
   <script>
     const pages = Array.from(document.querySelectorAll('.page'));
     const navLinks = {
@@ -1596,7 +1898,7 @@ for info in game_infos {
       'big-ideas':     document.getElementById('nav-big-ideas'),
       'documentation': document.getElementById('nav-documentation')
     };
- 
+ 
     function showPage(name) {
       pages.forEach(s => s.style.display = 'none');
       Object.values(navLinks).forEach(a => a && a.removeAttribute('aria-current'));
@@ -1610,7 +1912,7 @@ for info in game_infos {
         location.hash = '#home';
       }
     }
- 
+ 
     window.addEventListener('hashchange', () => showPage(location.hash.replace('#', '')));
     window.addEventListener('DOMContentLoaded', () => {
       showPage(location.hash.replace('#', '') || 'home');
@@ -1618,6 +1920,6 @@ for info in game_infos {
       if (y) y.textContent = new Date().getFullYear();
     });
   </script>
- 
+ 
 </body>
 </html>
